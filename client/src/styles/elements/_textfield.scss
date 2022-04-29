@@ -5,6 +5,7 @@
     padding-left: 10px;
     border-radius: $border_radius;
     border: 2px solid transparent;
+    font-size: $font_size_normal;
 
     &:focus-within {
         border-bottom-color: $primary_color;
