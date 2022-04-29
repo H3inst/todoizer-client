@@ -1,0 +1,17 @@
+.Button {
+    padding: 10px 16px;
+    background-color: $primary_color_light;
+    color: $primary_color;
+    font-weight: 600;
+    border: 0;
+    outline: 0;
+    user-select: none;
+    white-space: nowrap;
+    border-radius: $border_radius;
+    cursor: pointer;
+
+    @at-root #{&}__Primary {
+        background-color: $primary_color;
+        color: $white;
+    }
+}
