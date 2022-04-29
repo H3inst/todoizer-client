@@ -4,6 +4,11 @@
     background-color: $light_color_30;
     padding-left: 10px;
     border-radius: $border_radius;
+    border: 2px solid transparent;
+
+    &:focus-within {
+        border-bottom-color: $primary_color;
+    }
 
     > svg {
         width: 18px;

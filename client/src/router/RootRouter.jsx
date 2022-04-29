@@ -4,7 +4,7 @@ import routes from '../constants/routes';
 
 import Access from '../components/access/Access';
 import Login from '../components/access/login/Login';
-import Register from '../components/access/register/Register';
+import Dashboard from '../components/dashboard/Dashboard';
 
 
 function RootRouter() {
@@ -17,7 +17,10 @@ function RootRouter() {
           <Route path={routes.access} element={<Access />}>
             <Route index element={<Login />} />
             <Route path={routes.accessLogin} element={<Login />} />
-            <Route path={routes.accessRegister} element={<Register />} />
+          </Route>
+
+          <Route path={routes.dashboard} element={<Dashboard />}>
+
           </Route>
         </Routes>
       </BrowserRouter>

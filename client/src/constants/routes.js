@@ -10,5 +10,10 @@ export default Object.freeze({
   },
   get accessRegister() {
     return `${this.access}/register`;
+  },
+
+  // Dashboard
+  get dashboard() {
+    return '/dashboard';
   }
 });

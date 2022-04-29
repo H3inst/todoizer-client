@@ -1,0 +1,24 @@
+.Dashboard-Layout {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.Dashboard-Page {
+    display: flex;
+    flex: 1;
+}
+
+.Dashboard-Topbar {
+    width: 100%;
+    height: 45px;
+    background-color: $primary_color;
+}
+
+.Dashboard-Sidepanel {
+    width: 300px;
+    height: 100%;
+    background-color: $light_color_10;
+    border-right: 1px solid $light_color_20;
+}
