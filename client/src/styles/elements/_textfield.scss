@@ -11,15 +11,31 @@
         border-bottom-color: $primary_color;
     }
 
-    > svg {
+    >svg {
         width: 18px;
     }
 
-    > input {
+    >input {
         border: 0;
         background-color: transparent;
         flex: 1;
         outline: 0;
         padding: 10px;
+    }
+}
+
+.Textfield-With-Icon__No-Bg {
+    @extend .Textfield-With-Icon;
+    background-color: transparent;
+    border: 0;
+    color: inherit;
+}
+
+.Textfield-White {
+    color: $white;
+
+    &::placeholder {
+        color: $white;
+
     }
 }
