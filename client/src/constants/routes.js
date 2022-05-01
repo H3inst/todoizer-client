@@ -15,5 +15,22 @@ export default Object.freeze({
   // Dashboard
   get dashboard() {
     return '/dashboard';
+  },
+  get dashboardProjects() {
+    return `${this.dashboard}/projects`;
+  },
+  get dashboardProject() {
+    return `${this.dashboardProjects}/:projectId`;
+  },
+
+  get dashboardTeams() {
+    return `${this.dashboard}/teams`;
+  },
+  get dashboardTeam() {
+    return `${this.dashboardTeams}/:teamId`;
+  },
+
+  get dashboardSettings() {
+    return `${this.dashboard}/settings`;
   }
 });

@@ -90,7 +90,7 @@ function Login() {
       <div className="Access-Layout__Card-Content">
         {openForm === 'login' && renderLogin()}
         {openForm === 'register' && renderRegister()}
-        <div className="bg-primary_light">
+        <div className="bg-light">
           <img
             src={LoginSvg}
             className="Image"

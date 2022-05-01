@@ -1,9 +1,11 @@
 .bg-primary {
     background-color: $primary_color !important;
 }
-
 .bg-primary_light {
     background-color: $primary_color_light !important;
+}
+.bg-light {
+    background-color: $light_color_10;
 }
 
 .text-primary {

@@ -44,9 +44,16 @@
         align-items: center;
         padding-left: 30px;
         cursor: pointer;
+        text-decoration: none;
+        color: $black;
+
+        &.Item-Active {
+            background-color: $primary_color_light !important;
+        }
 
         &:hover {
             background-color: $primary_color_light;
         }
     }
+
 }

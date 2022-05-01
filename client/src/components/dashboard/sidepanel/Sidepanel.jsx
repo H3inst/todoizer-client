@@ -1,4 +1,6 @@
+import { generatePath, NavLink } from 'react-router-dom';
 import { Down, Add, Radial, Group } from 'grommet-icons';
+import routes from '../../../constants/routes';
 
 function Sidepanel() {
 
@@ -14,18 +16,16 @@ function Sidepanel() {
             <Add size="15px" />
           </button>
         </div>
-        <div className="Dashboard-Sidepanel__List-Item">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "Dashboard-Sidepanel__List-Item Item-Active" : "Dashboard-Sidepanel__List-Item"}
+          to={generatePath(routes.dashboardProject, {
+            projectId: 'P_2aks90lv'
+          })}
+        >
           <Radial size="12px" color="#0747a6" className="mr-10" />
           <p className="Parraf-Text">Home</p>
-        </div>
-        <div className="Dashboard-Sidepanel__List-Item">
-          <Radial size="12px" color="#e74c3c" className="mr-10" />
-          <p className="Parraf-Text">Important</p>
-        </div>
-        <div className="Dashboard-Sidepanel__List-Item">
-          <Radial size="12px" color="#8e44ad" className="mr-10" />
-          <p className="Parraf-Text">Later</p>
-        </div>
+        </NavLink>
 
 
         <div className="Dashboard-Sidepanel__List-Title">
@@ -37,22 +37,20 @@ function Sidepanel() {
             <Add size="15px" />
           </button>
         </div>
-        <div className="Dashboard-Sidepanel__List-Item">
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "Dashboard-Sidepanel__List-Item Item-Active" : "Dashboard-Sidepanel__List-Item"}
+          to={generatePath(routes.dashboardTeam, {
+            teamId: 'T_0sk2lMsi9'
+          })}
+        >
           <Group size="14px" color="#0747a6" className="mr-10" />
           <p className="Parraf-Text">Dev team</p>
-        </div>
-        <div className="Dashboard-Sidepanel__List-Item">
-          <Group size="14px" color="#e74c3c" className="mr-10" />
-          <p className="Parraf-Text">Support team</p>
-        </div>
-        <div className="Dashboard-Sidepanel__List-Item">
-          <Group size="14px" color="#8e44ad" className="mr-10" />
-          <p className="Parraf-Text">Later</p>
-        </div>
+        </NavLink>
 
       </div>
     );
-  }
+  };
 
   return render();
 }
