@@ -13,6 +13,7 @@
     background-color: $light_color_30;
     border-radius: $border_radius;
     border: 2px solid transparent;
+    padding-left: 10px;
     
     &:focus-within {
         border-bottom-color: $primary_color;
@@ -37,6 +38,7 @@
     background-color: transparent;
     border: 0;
     color: inherit;
+    padding-left: 0;
 }
 
 .Textfield-White {
