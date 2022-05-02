@@ -1,4 +1,4 @@
-import { Search } from "grommet-icons";
+import { SettingsOption, Search } from "grommet-icons";
 
 function Topbar() {
 
@@ -15,9 +15,9 @@ function Topbar() {
             placeholder="Quick search..."
           />
         </div>
-        <div>
-          &nbsp;
-        </div>
+        <button className="IconButton IconButton-White">
+          <SettingsOption color="white" />
+        </button>
       </div>
     );
   }

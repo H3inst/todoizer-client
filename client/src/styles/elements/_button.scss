@@ -2,7 +2,7 @@
     padding: 10px 16px;
     background-color: $primary_color_light;
     color: $primary_color;
-    font-weight: 500;
+    font-weight: 600;
     font-size: $font_size_normal;
     border: 0;
     outline: 0;
@@ -19,10 +19,11 @@
 
 .IconButton {
     border: 0;
+    width: 30px;
+    height: 30px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 8px;
     border-radius: 50%;
     background-color: transparent;
     user-select: none;
@@ -36,5 +37,13 @@
 
     &:hover {
         background-color: $light_color_20;
+    }
+
+    @at-root #{&}-White {
+        color: $white;
+        
+        &:hover {
+            background-color: rgba($color: $white, $alpha: 0.1);
+        }
     }
 }

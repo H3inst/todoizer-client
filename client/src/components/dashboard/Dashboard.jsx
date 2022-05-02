@@ -11,7 +11,7 @@ function Dashboard() {
         <Topbar />
         <div className="Dashboard-Page">
           <Sidepanel />
-          <main className="flex flex-column">
+          <main className="flex flex-column flex-1">
             <Outlet />
           </main>
         </div>

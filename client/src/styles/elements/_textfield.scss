@@ -1,21 +1,29 @@
+.Textfield-No-Bg {
+    border: 2px solid transparent;
+    outline: 0;
+    background-color: transparent;
+    flex: 1;
+    font-size: $font_size_normal;
+    padding: 10px;
+}
+
 .Textfield-With-Icon {
     display: flex;
     align-items: center;
     background-color: $light_color_30;
-    padding-left: 10px;
     border-radius: $border_radius;
     border: 2px solid transparent;
-    font-size: $font_size_normal;
-
+    
     &:focus-within {
         border-bottom-color: $primary_color;
     }
-
+    
     >svg {
         width: 18px;
     }
-
+    
     >input {
+        font-size: $font_size_normal;
         border: 0;
         background-color: transparent;
         flex: 1;
