@@ -1,5 +1,5 @@
 .Button {
-    padding: 10px 16px;
+    padding: 8px 10px;
     background-color: $primary_color_light;
     color: $primary_color;
     font-weight: 600;
@@ -14,6 +14,10 @@
     @at-root #{&}__Primary {
         background-color: $primary_color;
         color: $white;
+    }
+
+    @at-root #{&}__Lg {
+        padding: 10px 16px;
     }
 }
 
