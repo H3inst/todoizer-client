@@ -9,6 +9,7 @@ function Project() {
     return (
       <div className="Project-Layout">
         <h1 className="Title-Text">{projectId}</h1>
+        <button className="Button Button__Primary mt-20">Create subject</button>
         <div className="Project-Layout__Todo-List">
           <div className="Project-Layout__Todo-List__Item">
             <input type="checkbox" name="" id="" />
