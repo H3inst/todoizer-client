@@ -1,10 +1,11 @@
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { Lock, UserAdmin, Mail } from 'grommet-icons';
-
-import LoginSvg from '../../../assets/access/login.svg';
 
 function Login() {
   const [openForm, setOpenForm] = useState('login');
+  const { register, handleSubmit, reset } = useForm();
+  const onSubmit = (data) => console.log(data);
 
   const handleSetLoginForm = () => {
     setOpenForm('login');
@@ -15,7 +16,7 @@ function Login() {
 
   const renderLogin = () => {
     return (
-      <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
         <h1 className="Title-Text mb-20">Sign in</h1>
         <div className="Textfield-With-Icon w-70">
           <Mail />
@@ -23,6 +24,7 @@ function Login() {
             type="email"
             name="user_email"
             placeholder="Type your email"
+            {...register('user_email', { required: true })}
           />
         </div>
         <div className="Textfield-With-Icon w-70 mt-10">
@@ -31,19 +33,22 @@ function Login() {
             type="password"
             name="user_email"
             placeholder="Type your password"
+            {...register('user_password', { required: true })}
           />
         </div>
-        <button className="Button Button__Primary w-70 mt-20">Sign in</button>
+        <button className="Button Button__Primary w-70 mt-20">
+          Sign in
+        </button>
         <p className="Link-Text mt-30" onClick={handleSetRegisterForm}>
           Or create an account here.
         </p>
-      </div>
+      </form>
     );
   }
 
   const renderRegister = () => {
     return (
-      <div>
+      <form>
         <h1 className="Title-Text mb-20">Sign up</h1>
         <div className="Textfield-With-Icon w-70">
           <UserAdmin />
@@ -81,7 +86,7 @@ function Login() {
         <p className="Link-Text mt-30" onClick={handleSetLoginForm}>
           Already have an account?
         </p>
-      </div>
+      </form>
     );
   }
 
@@ -90,13 +95,10 @@ function Login() {
       <div className="Access-Layout__Card-Content">
         {openForm === 'login' && renderLogin()}
         {openForm === 'register' && renderRegister()}
-        <div className="bg-light">
-          <img
-            src={LoginSvg}
-            className="Image"
-            alt="access"
-            width="80%"
-          />
+        <div className="flex flex-1 align-center justify-center bg-primary">
+          <h1 className="display-1 fw-bolder text-white pl-20">
+            Get started creating your todo's for you and your teams!
+          </h1>
         </div>
       </div>
     );
