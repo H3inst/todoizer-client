@@ -36,7 +36,7 @@ function Login() {
             {...register('user_password', { required: true })}
           />
         </div>
-        <button className="Button Button__Primary w-70 mt-20">
+        <button className="Button Button__Primary Button__Lg w-70 mt-20">
           Sign in
         </button>
         <p className="Link-Text mt-30" onClick={handleSetRegisterForm}>
@@ -82,7 +82,7 @@ function Login() {
             placeholder="Confirm your password"
           />
         </div>
-        <button className="Button Button__Primary w-70 mt-20">Sign up</button>
+        <button className="Button Button__Primary Button__Lg w-70 mt-20">Sign up</button>
         <p className="Link-Text mt-30" onClick={handleSetLoginForm}>
           Already have an account?
         </p>
