@@ -1,4 +1,3 @@
-
 import Topbar from './topbar/Tobar';
 import Sidepanel from './sidepanel/Sidepanel';
 import { Outlet } from 'react-router-dom';

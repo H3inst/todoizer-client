@@ -4,7 +4,7 @@ import { Lock, UserAdmin, Mail } from 'grommet-icons';
 
 function Login() {
   const [openForm, setOpenForm] = useState('login');
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
   const onSubmit = (data) => console.log(data);
 
   const handleSetLoginForm = () => {

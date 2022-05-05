@@ -1,6 +1,7 @@
 import { generatePath, NavLink } from 'react-router-dom';
-import { Down, Add, Radial, Group } from 'grommet-icons';
+import { Down, Add, RadialSelected, Group } from 'grommet-icons';
 import routes from '../../../constants/routes';
+import ProjectModal from '../modals/ProjectModal';
 
 function Sidepanel() {
 
@@ -23,7 +24,7 @@ function Sidepanel() {
             projectId: 'P_2aks90lv'
           })}
         >
-          <Radial size="12px" color="#0747a6" className="mr-10" />
+          <RadialSelected size="12px" color="#0747a6" className="mr-10" />
           <p className="Parraf-Text">Home</p>
         </NavLink>
 
@@ -47,7 +48,10 @@ function Sidepanel() {
           <Group size="14px" color="#0747a6" className="mr-10" />
           <p className="Parraf-Text">Dev team</p>
         </NavLink>
-
+        <ProjectModal
+          isOpen={true}
+          width={450}
+        />
       </div>
     );
   };

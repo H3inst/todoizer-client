@@ -6,7 +6,7 @@ function EmptyState() {
     return (
       <div className="flex-1 flex flex-column justify-center align-center">
         <img src={EmptySvg} alt="Empty" className="Image" width="30%" />
-        <h1 className="Title-Text mt-20">Create a project or join in a team</h1>
+        <h1 className="Title-Text mt-20">Start creating a project or joining in a team</h1>
       </div>
     )
   }

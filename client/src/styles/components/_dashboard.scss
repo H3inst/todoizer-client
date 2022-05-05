@@ -51,6 +51,7 @@
 
         &.Item-Active {
             background-color: $primary_color_light !important;
+            font-weight: 700;
         }
 
         &:hover {

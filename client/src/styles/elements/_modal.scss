@@ -1,0 +1,29 @@
+.Modal {
+    @at-root #{&}-Wrapper {
+        width: 100%;
+        height: 100vh;
+        background-color: rgba($color: #000000, $alpha: 0.3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        z-index: 100;
+        position: absolute;
+    }
+    @at-root #{&}-Content {
+        padding: 20px;
+        border-radius: $border_radius * 2;
+        box-shadow: $box_shadow;
+        background-color: $white;
+    }
+    @at-root #{&}-Tabs {
+        width: 100%;
+        height: 50px;
+        display: flex;
+    }
+    @at-root #{&}-Tab {
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+}
