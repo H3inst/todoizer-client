@@ -3,8 +3,7 @@ $primary_color: #0747A6;
 $primary_color_light: rgba($primary_color, 0.1);
 
 $light_color_10: #FAFAFA;
-$light_color_20: #e1dfdd;
-$light_color_30: #e9e9e9;
+$light_color_20: #e9e9e9;
 
 $white: #FFF;
 $black: #000;
@@ -17,4 +16,10 @@ $box_shadow: 0 1.6px 3.6px 0 rgb(0 0 0 / 13%),
 0 0.3px 0.9px 0 rgb(0 0 0 / 11%);
 
 $font_size_normal: 1.3rem;
-$font_size_large: 2rem;
+$font_size_large: 1.8rem;
+
+$font_weight_normal: 400;
+$font_weight_medium: 500;
+$font_weight_semibold: 600;
+$font_weight_bold: 700;
+$font_weight_black: 900;

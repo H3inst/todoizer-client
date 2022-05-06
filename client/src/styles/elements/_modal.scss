@@ -18,12 +18,19 @@
     }
     @at-root #{&}-Tabs {
         width: 100%;
-        height: 50px;
+        height: 35px;
         display: flex;
     }
     @at-root #{&}-Tab {
         width: 100%;
         height: 100%;
         text-align: center;
+        border-bottom: 2px solid $light_color_20;
+        cursor: pointer;
+        transition: 0.1s all ease-in-out;
+
+        &.Modal-Tab__Active {
+            border-color: $primary_color;
+        }
     }
 }

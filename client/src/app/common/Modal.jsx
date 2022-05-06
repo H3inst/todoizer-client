@@ -1,7 +1,7 @@
 import { Fragment, useRef } from "react";
 import { createPortal } from "react-dom";
 
-function Modal({ children, isOpen = true, onClose, width }) {
+function Modal({ children, isOpen, onClose, width }) {
   const modalId = document.getElementById("modal");
   const modalRef = useRef(null);
 

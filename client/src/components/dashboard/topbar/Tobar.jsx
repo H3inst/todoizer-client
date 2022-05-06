@@ -5,7 +5,7 @@ function Topbar() {
   const render = () => {
     return (
       <div className="Dashboard-Topbar">
-        <h1 className="Title-Text">tdz</h1>
+        <h1 className="fw-bolder">todoizer</h1>
         <div className="Textfield-With-Icon__No-Bg">
           <Search color="white" />
           <input

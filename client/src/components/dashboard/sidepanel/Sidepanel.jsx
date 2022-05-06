@@ -1,9 +1,30 @@
+import { useState } from 'react';
 import { generatePath, NavLink } from 'react-router-dom';
 import { Down, Add, RadialSelected, Group } from 'grommet-icons';
+
 import routes from '../../../constants/routes';
-import ProjectModal from '../modals/ProjectModal';
+import TeamsModal from '../modals/TeamsModal';
 
 function Sidepanel() {
+  const [projectsModalConfig, setProjectsModalConfig] = useState(false);
+  const [teamsModalConfig, setTeamsModalConfig] = useState(false);
+
+  const handleOpenTeamsModal = () => {
+    setTeamsModalConfig(true)
+  }
+
+  const handleCloseTeamsModal = () => {
+    setTeamsModalConfig(false);
+    console.log('aaa');
+  }
+
+  const handleOpenProjectsModal = () => {
+    setProjectsModalConfig(true);
+  }
+
+  const handleCloseProjectsModal = () => {
+    setProjectsModalConfig(false);
+  }
 
   const render = () => {
     return (
@@ -34,7 +55,7 @@ function Sidepanel() {
             <Down size="small" className="mr-10" />
             <p className="Parraf-Text">Teams</p>
           </div>
-          <button className="IconButton">
+          <button className="IconButton" onClick={handleOpenTeamsModal}>
             <Add size="15px" />
           </button>
         </div>
@@ -48,9 +69,10 @@ function Sidepanel() {
           <Group size="14px" color="#0747a6" className="mr-10" />
           <p className="Parraf-Text">Dev team</p>
         </NavLink>
-        <ProjectModal
-          isOpen={true}
+        <TeamsModal
+          isOpen={teamsModalConfig}
           width={450}
+          onClose={handleCloseTeamsModal}
         />
       </div>
     );
