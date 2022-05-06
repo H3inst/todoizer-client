@@ -15,7 +15,6 @@ function Sidepanel() {
 
   const handleCloseTeamsModal = () => {
     setTeamsModalConfig(false);
-    console.log('aaa');
   }
 
   const handleOpenProjectsModal = () => {

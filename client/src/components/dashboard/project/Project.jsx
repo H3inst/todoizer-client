@@ -15,7 +15,7 @@ function Project() {
             <input
               className="Textfield-No-Bg"
               type="text"
-              value="This is my first todo in todoizer."
+              defaultValue="This is my first todo in todoizer."
             />
           </div>
           <div className="Project-Layout__Todo-List__Item">
@@ -23,7 +23,7 @@ function Project() {
             <input
               className="Textfield-No-Bg"
               type="text"
-              value="This is my first todo in todoizer."
+              defaultValue="This is my first todo in todoizer."
             />
           </div>
           <div className="Project-Layout__Todo-List__Item">
@@ -31,7 +31,7 @@ function Project() {
             <input
               className="Textfield-No-Bg"
               type="text"
-              value="This is my first todo in todoizer."
+              defaultValue="This is my first todo in todoizer."
             />
           </div>
           <div className="Project-Layout__Todo-List__Item">
@@ -39,7 +39,7 @@ function Project() {
             <input
               className="Textfield-No-Bg"
               type="text"
-              value="This is my first todo in todoizer."
+              defaultValue="This is my first todo in todoizer."
             />
           </div>
           <div className="Project-Layout__Todo-List__Item">
@@ -47,7 +47,7 @@ function Project() {
             <input
               className="Textfield-No-Bg"
               type="text"
-              value="This is my first todo in todoizer."
+              defaultValue="This is my first todo in todoizer."
             />
           </div>
 

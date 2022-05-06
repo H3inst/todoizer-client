@@ -5,8 +5,8 @@ function Modal({ children, isOpen, onClose, width }) {
   const modalId = document.getElementById("modal");
   const modalRef = useRef(null);
 
-  const handleCloseModal = ({ target }) => {
-    if (modalRef.current === target.value) {
+  const handleCloseModal = (event) => {
+    if (modalRef.current === event.target) {
       onClose();
     }
   }

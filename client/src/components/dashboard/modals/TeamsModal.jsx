@@ -3,7 +3,7 @@ import { Group, Lock } from 'grommet-icons';
 
 import Modal from '../../../app/common/Modal';
 
-function TeamsModal({ isOpen, onClose, width }) {
+function TeamsModal({ isOpen, onClose = () => { }, width }) {
   const [modalTab, setModalTab] = useState('create');
 
   const handleCloseModal = () => {
@@ -22,7 +22,7 @@ function TeamsModal({ isOpen, onClose, width }) {
     return (
       <div className="mt-20">
         <p className="Parraf-Text">
-          Here you can create your own team and invite your mates.
+          Here you can create your own team and invite your teammates.
         </p>
         <div className="flex align-center mt-20">
           <div className="Textfield-With-Icon mr-10">
