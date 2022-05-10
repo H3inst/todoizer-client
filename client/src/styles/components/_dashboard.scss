@@ -50,13 +50,9 @@
         color: $black;
 
         &.Item-Active {
-            background-color: $primary_color_light !important;
-            font-weight: $font_weight_semibold;
+            font-weight: $font_weight_bold;
         }
 
-        &:hover {
-            background-color: $primary_color_light;
-        }
     }
 
 }

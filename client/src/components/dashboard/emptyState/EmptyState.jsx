@@ -5,8 +5,8 @@ function EmptyState() {
   const render = () => {
     return (
       <div className="flex-1 flex flex-column justify-center align-center">
-        <img src={EmptySvg} alt="Empty" className="Image" width="30%" />
-        <h1 className="Title-Text mt-20">Start creating a project or joining in a team</h1>
+        <img src={EmptySvg} alt="Empty" className="Image" width="40%" />
+        <h1 className="Title-Text mt-20">Select a project or a team or create them quickly</h1>
       </div>
     )
   }

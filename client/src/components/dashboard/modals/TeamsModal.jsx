@@ -29,11 +29,10 @@ function TeamsModal({ isOpen, onClose = () => { }, width }) {
             <Group />
             <input type="text" placeholder="Your team name" />
           </div>
-          <div className="Textfield-With-Icon mr-10">
+          <div className="Textfield-With-Icon">
             <Lock />
             <input type="text" placeholder="Your team code" />
           </div>
-          <input type="color" />
         </div>
         <div className="w-100 flex justify-end mt-20">
           <button className="Button Button__Primary">

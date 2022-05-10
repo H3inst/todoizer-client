@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { generatePath, NavLink } from 'react-router-dom';
-import { Down, Add, RadialSelected, Group } from 'grommet-icons';
+import { Down, Add, CirclePlay, Group } from 'grommet-icons';
 
 import routes from '../../../constants/routes';
 import TeamsModal from '../modals/TeamsModal';
@@ -45,7 +45,7 @@ function Sidepanel() {
             projectId: 'P_2aks90lv'
           })}
         >
-          <RadialSelected size="12px" color="#0747a6" className="mr-10" />
+          <CirclePlay size="15px" color="#0747a6" className="mr-10" />
           <p className="Parraf-Text">Home</p>
         </NavLink>
 
@@ -69,7 +69,7 @@ function Sidepanel() {
           <Group size="14px" color="#0747a6" className="mr-10" />
           <p className="Parraf-Text">Dev team</p>
         </NavLink>
-        <ProjectsModal 
+        <ProjectsModal
           isOpen={projectsModalConfig}
           width={400}
           onClose={handleCloseProjectsModal}

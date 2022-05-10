@@ -7,10 +7,10 @@ function Project() {
 
   const render = () => {
     return (
-      <div className="Project-Layout">
+      <div className="Main-Layout">
         <h1 className="Title-Text">{projectId}</h1>
-        <div className="Project-Layout__Todo-List">
-          <div className="Project-Layout__Todo-List__Item">
+        <div className="Main-Layout__Todo-List">
+          <div className="Main-Layout__Todo-List__Item">
             <input type="checkbox" name="" id="" />
             <input
               className="Textfield-No-Bg"
@@ -21,7 +21,7 @@ function Project() {
               <Close size="10" />
             </button>
           </div>
-          <div className="Project-Layout__Todo-List__Item">
+          <div className="Main-Layout__Todo-List__Item">
             <input type="checkbox" name="" id="" />
             <input
               className="Textfield-No-Bg"
@@ -32,7 +32,7 @@ function Project() {
               <Close size="10" />
             </button>
           </div>
-          <div className="Project-Layout__Todo-List__Item">
+          <div className="Main-Layout__Todo-List__Item">
             <input type="checkbox" name="" id="" />
             <input
               className="Textfield-No-Bg"
@@ -43,7 +43,7 @@ function Project() {
               <Close size="10" />
             </button>
           </div>
-          <div className="Project-Layout__Todo-List__Item">
+          <div className="Main-Layout__Todo-List__Item">
             <input type="checkbox" name="" id="" />
             <input
               className="Textfield-No-Bg"
@@ -54,7 +54,7 @@ function Project() {
               <Close size="10" />
             </button>
           </div>
-          <div className="Project-Layout__Todo-List__Item">
+          <div className="Main-Layout__Todo-List__Item">
             <input type="checkbox" name="" id="" />
             <input
               className="Textfield-No-Bg"
