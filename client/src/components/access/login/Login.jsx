@@ -4,39 +4,58 @@ import { Lock, UserAdmin, Mail } from 'grommet-icons';
 
 function Login() {
   const [openForm, setOpenForm] = useState('login');
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const {
+    register: setLoginInput,
+    handleSubmit: handleSubmitLogin,
+    formState: formStateLogin,
+    reset: resetLoginInputs
+  } = useForm();
+
+  const {
+    register: setRegisterInput,
+    handleSubmit: handleSubmitRegister,
+    formState: formStateRegister,
+    reset: resetRegisterInputs
+  } = useForm();
+
+  const onSubmitLogin = (data) => console.log(data);
+  const onSubmitRegister = (data) => console.log(data);
 
   const handleSetLoginForm = () => {
     setOpenForm('login');
+    resetLoginInputs();
   }
   const handleSetRegisterForm = () => {
     setOpenForm('register');
+    resetRegisterInputs();
   }
 
   const renderLogin = () => {
     return (
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form id="login_form" onSubmit={handleSubmitLogin(onSubmitLogin)}>
         <h1 className="Title-Text mb-20">Sign in</h1>
         <div className="Textfield-With-Icon w-70">
           <Mail />
           <input
             type="email"
-            name="user_email"
             placeholder="Type your email"
-            {...register('user_email', { required: true })}
+            {...setLoginInput('user_email', { required: true })}
           />
         </div>
         <div className="Textfield-With-Icon w-70 mt-10">
           <Lock />
           <input
             type="password"
-            name="user_email"
             placeholder="Type your password"
-            {...register('user_password', { required: true })}
+            {...setLoginInput('user_password', { required: true })}
           />
         </div>
-        <button className="Button Button__Primary Button__Lg w-70 mt-20">
+        <button
+          type="submit"
+          className="Button Button__Primary Button__Lg w-70 mt-20"
+          form="login_form"
+          disabled={formStateLogin.isSubmitting}
+        >
           Sign in
         </button>
         <p className="Link-Text mt-30" onClick={handleSetRegisterForm}>
@@ -48,41 +67,48 @@ function Login() {
 
   const renderRegister = () => {
     return (
-      <form>
+      <form id="register_form" onSubmit={handleSubmitRegister(onSubmitRegister)}>
         <h1 className="Title-Text mb-20">Sign up</h1>
         <div className="Textfield-With-Icon w-70">
           <UserAdmin />
           <input
             type="text"
-            name="user_name"
             placeholder="Type your name"
+            {...setRegisterInput('user_name', { required: true })}
           />
         </div>
         <div className="Textfield-With-Icon w-70 mt-10">
           <Mail />
           <input
             type="email"
-            name="user_email"
             placeholder="Type your email"
+            {...setRegisterInput('user_email', { required: true })}
           />
         </div>
         <div className="Textfield-With-Icon w-70 mt-10">
           <Lock />
           <input
             type="password"
-            name="user_email"
             placeholder="Type your password"
+            {...setRegisterInput('user_password', { required: true })}
           />
         </div>
         <div className="Textfield-With-Icon w-70 mt-10">
           <Lock />
           <input
             type="password"
-            name="user_email"
             placeholder="Confirm your password"
+            {...setRegisterInput('user_confirm_password', { required: true })}
           />
         </div>
-        <button className="Button Button__Primary Button__Lg w-70 mt-20">Sign up</button>
+        <button
+          type="submit"
+          className="Button Button__Primary Button__Lg w-70 mt-20"
+          form="register_form"
+          disabled={formStateRegister.isSubmitting}
+        >
+          Sign up
+        </button>
         <p className="Link-Text mt-30" onClick={handleSetLoginForm}>
           Already have an account?
         </p>
