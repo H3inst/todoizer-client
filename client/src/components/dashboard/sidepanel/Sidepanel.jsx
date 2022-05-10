@@ -4,6 +4,7 @@ import { Down, Add, RadialSelected, Group } from 'grommet-icons';
 
 import routes from '../../../constants/routes';
 import TeamsModal from '../modals/TeamsModal';
+import ProjectsModal from '../modals/ProjectsModal';
 
 function Sidepanel() {
   const [projectsModalConfig, setProjectsModalConfig] = useState(false);
@@ -33,7 +34,7 @@ function Sidepanel() {
             <Down size="small" className="mr-10" />
             <p className="Parraf-Text">Projects</p>
           </div>
-          <button className="IconButton">
+          <button className="IconButton" onClick={handleOpenProjectsModal}>
             <Add size="15px" />
           </button>
         </div>
@@ -68,6 +69,11 @@ function Sidepanel() {
           <Group size="14px" color="#0747a6" className="mr-10" />
           <p className="Parraf-Text">Dev team</p>
         </NavLink>
+        <ProjectsModal 
+          isOpen={projectsModalConfig}
+          width={400}
+          onClose={handleCloseProjectsModal}
+        />
         <TeamsModal
           isOpen={teamsModalConfig}
           width={450}

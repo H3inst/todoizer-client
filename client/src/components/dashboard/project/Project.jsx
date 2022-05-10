@@ -1,4 +1,4 @@
-import { Add } from 'grommet-icons';
+import { Add, Close } from 'grommet-icons';
 import { useParams } from 'react-router-dom';
 
 function Project() {
@@ -17,6 +17,9 @@ function Project() {
               type="text"
               defaultValue="This is my first todo in todoizer."
             />
+            <button className="IconButton">
+              <Close size="10" />
+            </button>
           </div>
           <div className="Project-Layout__Todo-List__Item">
             <input type="checkbox" name="" id="" />
@@ -25,6 +28,9 @@ function Project() {
               type="text"
               defaultValue="This is my first todo in todoizer."
             />
+            <button className="IconButton">
+              <Close size="10" />
+            </button>
           </div>
           <div className="Project-Layout__Todo-List__Item">
             <input type="checkbox" name="" id="" />
@@ -33,6 +39,9 @@ function Project() {
               type="text"
               defaultValue="This is my first todo in todoizer."
             />
+            <button className="IconButton">
+              <Close size="10" />
+            </button>
           </div>
           <div className="Project-Layout__Todo-List__Item">
             <input type="checkbox" name="" id="" />
@@ -41,6 +50,9 @@ function Project() {
               type="text"
               defaultValue="This is my first todo in todoizer."
             />
+            <button className="IconButton">
+              <Close size="10" />
+            </button>
           </div>
           <div className="Project-Layout__Todo-List__Item">
             <input type="checkbox" name="" id="" />
@@ -49,6 +61,9 @@ function Project() {
               type="text"
               defaultValue="This is my first todo in todoizer."
             />
+            <button className="IconButton">
+              <Close size="10" />
+            </button>
           </div>
 
           <div className="Textfield-With-Icon__No-Bg mt-10 w-100">
