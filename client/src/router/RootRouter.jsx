@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import routes from '../constants/routes';
 
@@ -11,23 +12,32 @@ import Team from '../components/dashboard/team/Team';
 
 
 function RootRouter() {
+  const isAuth = useSelector(state => state.user.isAuth);
 
   const render = () => {
     return (
       <BrowserRouter>
         <Routes>
           {/* Access */}
-          <Route path={routes.access} element={<Access />}>
+          <Route path={routes.access} element={
+            !isAuth
+              ? <Access />
+              : <Navigate to={routes.dashboard} />
+          }>
             <Route index element={<Login />} />
             <Route path={routes.accessLogin} element={<Login />} />
           </Route>
           {/* Dashboard */}
-          <Route path={routes.dashboard} element={<Dashboard />}>
+          <Route path={routes.dashboard} element={
+            isAuth
+              ? <Dashboard />
+              : <Navigate to={routes.access} />
+          }>
             <Route index element={<EmptyState />} />
             <Route path={routes.dashboardProject} element={<Project />} />
             <Route path={routes.dashboardTeam} element={<Team />} />
             <Route path={routes.dashboardSettings} element={<h1>Settgins</h1>} />
-          </Route>  
+          </Route>
         </Routes>
       </BrowserRouter>
     );

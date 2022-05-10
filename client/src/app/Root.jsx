@@ -1,11 +1,13 @@
-import { Fragment } from "react";
-import RootRouter from "../router/RootRouter";
+import { Provider as StoreProvider } from 'react-redux';
+
+import RootRouter from '../router/RootRouter';
+import { store } from '../config/store';
 
 function Root() {
   return (
-    <Fragment>
+    <StoreProvider store={store}>
       <RootRouter />
-    </Fragment>
+    </StoreProvider>
   );
 }
 

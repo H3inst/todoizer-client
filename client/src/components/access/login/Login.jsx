@@ -96,8 +96,8 @@ function Login() {
         {openForm === 'login' && renderLogin()}
         {openForm === 'register' && renderRegister()}
         <div className="flex flex-1 align-center justify-center bg-primary">
-          <h1 className="display-1 fw-bolder text-white pl-20">
-            Get started creating your todo's for you and your teams!
+          <h1 className="display-1 fw-bolder text-center text-white">
+            Start with Todoizer
           </h1>
         </div>
       </div>
