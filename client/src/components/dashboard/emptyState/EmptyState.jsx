@@ -6,7 +6,9 @@ function EmptyState() {
     return (
       <div className="flex-1 flex flex-column justify-center align-center">
         <img src={EmptySvg} alt="Empty" className="Image" width="40%" />
-        <h1 className="Title-Text mt-20">Select a project or a team or create them quickly</h1>
+        <h1 className="display-3 mt-20">
+          Select a project or a team or create them quickly
+        </h1>
       </div>
     )
   }
