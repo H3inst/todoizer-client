@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { Lock, UserAdmin, Mail } from 'grommet-icons';
+import { registerUserAction } from '../../../features/user/userActions';
 
 function Login() {
   const dispatch = useDispatch();
@@ -22,7 +23,9 @@ function Login() {
   } = useForm();
 
   const onSubmitLogin = (data) => console.log(data);
-  const onSubmitRegister = (data) => dispatch(data);
+  const onSubmitRegister = (data) => {
+    dispatch(registerUserAction(data));
+  };
 
   const handleSetLoginForm = () => {
     setOpenForm('login');
