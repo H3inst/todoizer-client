@@ -1,24 +1,28 @@
 const mysql = require('mysql');
+const { promisify } = require('util');
+
 const CONFIG_DB = require('../config/database.json');
 
-const connection = mysql.createConnection(CONFIG_DB);
+const pool = mysql.createPool(CONFIG_DB);
 
-function beginConnection() {
-  connection.connect(function (error) {
-    if (error) throw error;
-    console.log('Database configuration mounted.');
-  });
-}
+pool.getConnection(function (error, connection) {
+  if (error) {
+    if (error.code === 'PROTOCOL_CONNECTION_LOST') {
+      throw new Error('Database connection was closed.');
+    }
+    if (error.code === 'ER_CON_COUNT_ERROR') {
+      throw new Error('Database has too many connections.');
+    }
+    if (error.code === 'ECONNREFUSED') {
+      throw new Error('Database connection was refused.');
+    }
+  }
 
-function endConnection() {
-  connection.end(function (error) {
-    if (error) throw error;
-    console.log('Database configuration ended');
-  });
-}
+  if (connection) connection.release();
+  console.log('Database configuration mounted.');
+  return;
+});
 
-module.exports = {
-  connection,
-  beginConnection,
-  endConnection
-};
+pool.query = promisify(pool.query);
+
+module.exports = pool;
