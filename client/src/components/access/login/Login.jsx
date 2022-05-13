@@ -1,8 +1,11 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useDispatch } from 'react-redux';
 import { Lock, UserAdmin, Mail } from 'grommet-icons';
 
 function Login() {
+  const dispatch = useDispatch();
+
   const [openForm, setOpenForm] = useState('login');
   const {
     register: setLoginInput,
@@ -19,7 +22,7 @@ function Login() {
   } = useForm();
 
   const onSubmitLogin = (data) => console.log(data);
-  const onSubmitRegister = (data) => console.log(data);
+  const onSubmitRegister = (data) => dispatch(data);
 
   const handleSetLoginForm = () => {
     setOpenForm('login');
@@ -98,7 +101,7 @@ function Login() {
           <input
             type="password"
             placeholder="Confirm your password"
-            {...setRegisterInput('user_confirm_password', { required: true })}
+            {...setRegisterInput('confirm_password', { required: true })}
           />
         </div>
         <button

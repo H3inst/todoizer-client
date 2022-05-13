@@ -6,9 +6,9 @@ import { buildUrl, setHeaders } from '../utils/utils';
  * @param {Object} payload 
  * @returns 
  */
-export async function registerUserService(payload) {
+export async function registerUserService(user) {
   const absoluteUrl = buildUrl('/access/register');
-  const { data: serviceData } = await axios.post(absoluteUrl, payload);
+  const { data: serviceData } = await axios.post(absoluteUrl, user);
 
   return serviceData;
 }
