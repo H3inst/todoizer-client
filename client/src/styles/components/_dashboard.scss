@@ -50,7 +50,7 @@
         color: $black;
 
         &.Item-Active {
-            font-weight: $font_weight_bold;
+            background-color: $primary_color_light;
         }
 
     }
