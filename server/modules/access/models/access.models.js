@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const generateId = require('../../../lib/generateid');
 const validateSchema = require('../../../lib/validate.schema');
 const { registerUserDao, getUserByEmailDao } = require('../dao/access.dao');
+const generateToken = require('../../../lib/generate.token');
 
 const USER_SCHEMA = Joi.object({
   user_id: Joi.string().max(15).required(),
@@ -34,8 +35,32 @@ async function registerUserModel(user) {
   return {};
 }
 
-async function loginUserModel(payload) {
-  return payload;
+async function loginUserModel(user) {
+  const query = await getUserByEmailDao(user.user_email);
+
+  if (query.length > 0) {
+    const result = query[0];
+    const isMatchedPassword = bcrypt.compareSync(user.user_password, result.user_password);
+
+    if (!isMatchedPassword) {
+      throw new Error('Email or password are not correct. Please verify.');
+    }
+    const token = await generateToken({
+      user_id: result.user_id,
+      user_name: result.user_name
+    });
+
+    return {
+      token,
+      user: {
+        user_id: result.user_id,
+        user_name: result.user_name
+      }
+    };
+
+  } else {
+    throw new Error('Email or password are not correct. Please verify.');
+  }
 }
 
 module.exports = {

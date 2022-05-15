@@ -18,9 +18,9 @@ export async function registerUserService(user) {
  * @param {Object} payload 
  * @returns 
  */
-export async function loginUserService(payload) {
+export async function loginUserService(user) {
   const absoluteUrl = buildUrl('/access');
-  const { data: serviceData } = await axios.post(absoluteUrl, payload);
+  const { data: serviceData } = await axios.post(absoluteUrl, user);
 
   return serviceData;
 }

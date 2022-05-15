@@ -1,7 +1,9 @@
+import { useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import routes from '../constants/routes';
+import { verifyAuthAction } from '../features/user/userActions';
 
 import Access from '../components/access/Access';
 import Login from '../components/access/login/Login';
@@ -13,6 +15,11 @@ import Team from '../components/dashboard/team/Team';
 
 function RootRouter() {
   const isAuth = useSelector(state => state.user.isAuth);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(verifyAuthAction());
+  }, [dispatch]);
 
   const render = () => {
     return (

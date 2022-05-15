@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
 import { Lock, UserAdmin, Mail } from 'grommet-icons';
-import { registerUserAction } from '../../../features/user/userActions';
+
+import { registerUserAction, loginUserAction } from '../../../features/user/userActions';
 
 function Login() {
   const dispatch = useDispatch();
@@ -22,19 +23,25 @@ function Login() {
     reset: resetRegisterInputs
   } = useForm();
 
-  const onSubmitLogin = (data) => console.log(data);
-  const onSubmitRegister = (data) => {
-    dispatch(registerUserAction(data));
+  const onSubmitLogin = (data) => {
+    dispatch(loginUserAction(data));
+    resetLoginInputs();
+  };
+
+  const onSubmitRegister = async (data) => {
+    const isSuccessful = await dispatch(registerUserAction(data));
+    if (isSuccessful) setOpenForm('login');
+    resetRegisterInputs();
   };
 
   const handleSetLoginForm = () => {
     setOpenForm('login');
     resetLoginInputs();
-  }
+  };
   const handleSetRegisterForm = () => {
     setOpenForm('register');
     resetRegisterInputs();
-  }
+  };
 
   const renderLogin = () => {
     return (
@@ -69,7 +76,7 @@ function Login() {
         </p>
       </form>
     );
-  }
+  };
 
   const renderRegister = () => {
     return (
@@ -120,7 +127,7 @@ function Login() {
         </p>
       </form>
     );
-  }
+  };
 
   const render = () => {
     return (
@@ -134,7 +141,7 @@ function Login() {
         </div>
       </div>
     );
-  }
+  };
 
   return render();
 }
