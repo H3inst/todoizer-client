@@ -25,6 +25,11 @@ function RootRouter() {
     return (
       <BrowserRouter>
         <Routes>
+          <Route path={routes.root} element={
+            !isAuth
+              ? <Navigate to={routes.access} />
+              : <Navigate to={routes.dashboard} />
+          } />
           {/* Access */}
           <Route path={routes.access} element={
             !isAuth
@@ -48,7 +53,7 @@ function RootRouter() {
         </Routes>
       </BrowserRouter>
     );
-  }
+  };
 
   return render();
 }
