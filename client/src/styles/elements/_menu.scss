@@ -1,0 +1,34 @@
+.Dropdown {
+    position: relative;
+    display: inline-block;
+
+    @at-root #{&}-Menu {
+        display: none;
+        position: absolute;
+        top: 40px;
+        right: 0px;
+        background-color: $light_color_10;
+        border-radius: $border_radius;
+        padding: 10px 0;
+        min-width: 200px;
+        box-shadow: $box_shadow;
+        z-index: 1;
+        user-select: none;
+
+        @at-root #{&}__Item {
+            @extend .Parraf-Text;
+            padding: 8px 10px;
+            margin-top: 5px;
+            border-radius: $border_radius;
+            cursor: pointer;
+
+            &:hover {
+                background-color: $primary_color_light;
+            }
+        }
+    }
+}
+
+.Show-Menu {
+    display: block !important;
+}

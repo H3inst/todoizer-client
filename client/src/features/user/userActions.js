@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { STATUS } from '../../constants/constants';
 import * as AccessServices from '../../services/access';
 import * as interfaceActions from '../interface/interfaceActions';
-import { login } from './userSlice';
+import { login, logout } from './userSlice';
 
 export function registerUserAction(user) {
   return async function (dispatch) {
@@ -55,6 +55,19 @@ export function loginUserAction(user) {
   };
 }
 
+export function logoutUserAction() {
+  return function (dispatch) {
+    try {
+      dispatch(interfaceActions.startLoadingAction());
+      localStorage.clear();
+      dispatch(logout());
+
+    } finally {
+      dispatch(interfaceActions.finishLoadingAction());
+    }
+  };
+}
+
 export function verifyAuthAction() {
   return async function (dispatch) {
     try {
@@ -62,13 +75,13 @@ export function verifyAuthAction() {
       const response = await AccessServices.checkTokenService();
 
       if (response.status !== STATUS.ok) {
-        toast.error(response.error);
         localStorage.removeItem('x_token');
         return false;
       }
       dispatch(login(response.data));
 
     } catch (error) {
+      console.error(error);
 
     } finally {
       dispatch(interfaceActions.finishLoadingAction());
