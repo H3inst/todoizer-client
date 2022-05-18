@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+const jsonwebtoken = require('jsonwebtoken');
 const JWT_SECRET_KEY = require('../config/jwt');
 
 function validateJsonWebToken(req, _res, next) {
@@ -9,7 +9,7 @@ function validateJsonWebToken(req, _res, next) {
   }
 
   try {
-    const payload = jwt.verify(token, JWT_SECRET_KEY);
+    const payload = jsonwebtoken.verify(token, JWT_SECRET_KEY);
     req.user_id = payload.user_id;
     req.user_name = payload.user_name;
     next();

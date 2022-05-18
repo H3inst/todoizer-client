@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { generatePath, NavLink } from 'react-router-dom';
-import { Down, Add, CirclePlay, Group } from 'grommet-icons';
+import { Down, Add, Fireball, Group } from 'grommet-icons';
 
 import routes from '../../../constants/routes';
 import TeamsModal from '../modals/TeamsModal';
@@ -45,7 +45,7 @@ function Sidepanel() {
             projectId: 'P_2aks90lv'
           })}
         >
-          <CirclePlay size="15px" color="#0747a6" className="mr-10" />
+          <Fireball size="15px" color="#0747a6" className="mr-10" />
           <p className="Parraf-Text">Home</p>
         </NavLink>
 
