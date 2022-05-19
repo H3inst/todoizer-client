@@ -1,10 +1,11 @@
 import { useState, useRef } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { SettingsOption, Search } from "grommet-icons";
 import { logoutUserAction } from '../../../features/user/userActions';
 
 function Topbar() {
   const [openMenu, setOpenMenu] = useState(false);
+  const user_name = useSelector(state => state.user.user.user_name);
   const dropdownButton = useRef(null);
   const dispatch = useDispatch();
 
@@ -39,7 +40,7 @@ function Topbar() {
           </button>
           <div className={`Dropdown-Menu ${openMenu && 'Show-Menu'}`}>
             <h1 className="Title-Text ml-10">
-              Hi Test
+              Hi {user_name}!
             </h1>
             <div className="Dropdown-Menu__Item" onClick={handleLogout}>
               Logout

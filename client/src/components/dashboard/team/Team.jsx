@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import EmptyState from '../emptyState/EmptyState';
+import EmptyState from '../emptyState/EmptyStateProject';
 
 function Team() {
 

@@ -8,7 +8,7 @@ import { verifyAuthAction } from '../features/user/userActions';
 import Access from '../components/access/Access';
 import Login from '../components/access/login/Login';
 import Dashboard from '../components/dashboard/Dashboard';
-import EmptyState from '../components/dashboard/emptyState/EmptyState';
+import EmptyState from '../components/dashboard/emptyState/EmptyStateDashboard';
 import Project from '../components/dashboard/project/Project';
 import Team from '../components/dashboard/team/Team';
 
