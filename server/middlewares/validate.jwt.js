@@ -2,7 +2,7 @@ const jsonwebtoken = require('jsonwebtoken');
 const JWT_SECRET_KEY = require('../config/jwt');
 
 function validateJsonWebToken(req, _res, next) {
-  const token = req.header('Authentication');
+  const token = req.header('Authorization');
 
   if (!token) {
     throw new Error('The token was not provided.');
@@ -15,7 +15,6 @@ function validateJsonWebToken(req, _res, next) {
     next();
 
   } catch (error) {
-    console.error(error);
     throw new Error('Token provided is not valid.');
   }
 }

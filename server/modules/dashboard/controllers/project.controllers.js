@@ -1,9 +1,9 @@
 const ProjectModels = require('../models/project.models');
 const { successResponse } = require('../../../lib/response.helper');
 
-async function getAllProjects(req, res, next) {
+async function getAllProjectsController(req, res, next) {
   try {
-    const result = await ProjectModels.getAllProjects(req);
+    const result = await ProjectModels.getAllProjectsModel(req);
     successResponse(res, result);
 
   } catch (error) {
@@ -11,9 +11,9 @@ async function getAllProjects(req, res, next) {
   }
 }
 
-async function getProjectById(req, res, next) {
+async function getProjectByIdController(req, res, next) {
   try {
-    const result = await ProjectModels.getProjectById(req);
+    const result = await ProjectModels.getProjectByIdModel(req);
     successResponse(res, result);
 
   } catch (error) {
@@ -21,9 +21,9 @@ async function getProjectById(req, res, next) {
   }
 }
 
-async function createProject(req, res, next) {
+async function createProjectController(req, res, next) {
   try {
-    const result = await ProjectModels.createProject(req);
+    const result = await ProjectModels.createProjectModel(req);
     successResponse(res, result);
 
   } catch (error) {
@@ -31,9 +31,9 @@ async function createProject(req, res, next) {
   }
 }
 
-async function editProject(req, res, next) {
+async function editProjectController(req, res, next) {
   try {
-    const result = await ProjectModels.req(req);
+    const result = await ProjectModels.editProjectModel(req);
     successResponse(res, result);
 
   } catch (error) {
@@ -41,9 +41,9 @@ async function editProject(req, res, next) {
   }
 }
 
-async function deleteProject(req, res, next) {
+async function deleteProjectController(req, res, next) {
   try {
-    const result = await ProjectModels.deleteProject(req);
+    const result = await ProjectModels.deleteProjectModel(req);
     successResponse(res, result);
 
   } catch (error) {
@@ -52,9 +52,9 @@ async function deleteProject(req, res, next) {
 }
 
 module.exports = {
-  getAllProjects,
-  getProjectById,
-  createProject,
-  editProject,
-  deleteProject
+  getAllProjectsController,
+  getProjectByIdController,
+  createProjectController,
+  editProjectController,
+  deleteProjectController
 };
