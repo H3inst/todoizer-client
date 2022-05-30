@@ -2,16 +2,23 @@ import { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { SettingsOption, Search } from "grommet-icons";
 import { logoutUserAction } from '../../../features/user/userActions';
+import { useOutsideClick } from '../../../hooks/useOutsideClick';
 
 function Topbar() {
   const [openMenu, setOpenMenu] = useState(false);
-  const user_name = useSelector(state => state.user.user.user_name);
-  const dropdownButton = useRef(null);
+  const userName = useSelector(state => state.user.user.user_name);
+  const wrapperRef = useRef(null);
   const dispatch = useDispatch();
 
-  const handleToggleMenu = () => {
-    setOpenMenu((prevState) => !prevState);
+  const handleOpenMenu = () => {
+    setOpenMenu(true);
   };
+
+  const handleCloseMenu = () => {
+    setOpenMenu(false);
+  };
+
+  useOutsideClick(wrapperRef, openMenu, handleCloseMenu);
 
   const handleLogout = () => {
     dispatch(logoutUserAction());
@@ -30,17 +37,19 @@ function Topbar() {
             placeholder="Quick search..."
           />
         </div>
-        <div className="Dropdown text-black">
+        <div
+          className="Dropdown text-black"
+          ref={wrapperRef}
+        >
           <button
-            ref={dropdownButton}
             className="IconButton IconButton-White"
-            onClick={handleToggleMenu}
+            onClick={handleOpenMenu}
           >
             <SettingsOption color="white" />
           </button>
           <div className={`Dropdown-Menu ${openMenu && 'Show-Menu'}`}>
             <h1 className="Title-Text ml-10">
-              Hi {user_name}!
+              Hi {userName}!
             </h1>
             <div className="Dropdown-Menu__Item" onClick={handleLogout}>
               Logout

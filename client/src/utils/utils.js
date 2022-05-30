@@ -7,7 +7,7 @@ export function setHeaders() {
   const headers = {};
 
   if (token) {
-    headers['Authentication'] = token;
+    headers['Authorization'] = token;
   }
 
   return headers;

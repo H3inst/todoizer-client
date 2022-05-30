@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 
 import { STATUS } from '../../constants/constants';
-import * as AccessServices from '../../services/access';
+import * as accessServices from '../../services/access';
 import * as interfaceActions from '../interface/interfaceActions';
 import { login, logout } from './userSlice';
 
@@ -16,7 +16,7 @@ export function registerUserAction(user) {
       }
       delete user.confirm_password;
 
-      const response = await AccessServices.registerUserService(user);
+      const response = await accessServices.registerUserService(user);
       if (response.status !== STATUS.ok) {
         toast.error(response.error);
         return false;
@@ -37,7 +37,7 @@ export function loginUserAction(user) {
   return async function (dispatch) {
     try {
       dispatch(interfaceActions.startLoadingAction());
-      const response = await AccessServices.loginUserService(user);
+      const response = await accessServices.loginUserService(user);
 
       if (response.status !== STATUS.ok) {
         toast.error(response.error);
@@ -72,7 +72,7 @@ export function verifyAuthAction() {
   return async function (dispatch) {
     try {
       dispatch(interfaceActions.startLoadingAction());
-      const response = await AccessServices.checkTokenService();
+      const response = await accessServices.checkTokenService();
 
       if (response.status !== STATUS.ok) {
         localStorage.removeItem('x_token');

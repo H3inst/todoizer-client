@@ -6,25 +6,25 @@ import routes from '../../../constants/routes';
 import TeamsModal from '../modals/TeamsModal';
 import ProjectsModal from '../modals/ProjectsModal';
 
-function Sidepanel() {
+function Sidepanel({ projects = [] }) {
   const [projectsModalConfig, setProjectsModalConfig] = useState(false);
   const [teamsModalConfig, setTeamsModalConfig] = useState(false);
 
   const handleOpenTeamsModal = () => {
-    setTeamsModalConfig(true)
-  }
+    setTeamsModalConfig(true);
+  };
 
   const handleCloseTeamsModal = () => {
     setTeamsModalConfig(false);
-  }
+  };
 
   const handleOpenProjectsModal = () => {
     setProjectsModalConfig(true);
-  }
+  };
 
   const handleCloseProjectsModal = () => {
     setProjectsModalConfig(false);
-  }
+  };
 
   const render = () => {
     return (
@@ -38,16 +38,19 @@ function Sidepanel() {
             <Add size="15px" />
           </button>
         </div>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? "Dashboard-Sidepanel__List-Item Item-Active" : "Dashboard-Sidepanel__List-Item"}
-          to={generatePath(routes.dashboardProject, {
-            projectId: 'P_2aks90lv'
-          })}
-        >
-          <Fireball size="15px" color="#0747a6" className="mr-10" />
-          <p className="Parraf-Text">Home</p>
-        </NavLink>
+        {projects.map((project) => (
+          <NavLink
+            key={project.project_id}
+            className={({ isActive }) =>
+              isActive ? "Dashboard-Sidepanel__List-Item Item-Active" : "Dashboard-Sidepanel__List-Item"}
+            to={generatePath(routes.dashboardProject, {
+              projectId: project.project_id
+            })}
+          >
+            <Fireball size="15px" color="#0747a6" className="mr-10" />
+            <p className="Parraf-Text">{project.project_name}</p>
+          </NavLink>
+        ))}
 
 
         <div className="Dashboard-Sidepanel__List-Title">

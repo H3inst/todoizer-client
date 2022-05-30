@@ -10,7 +10,7 @@
         background-color: $light_color_10;
         border-radius: $border_radius;
         border: 1px solid $light_color_30;
-        padding: 10px 0;
+        padding: 5px 0;
         min-width: 200px;
         z-index: 1;
         user-select: none;
@@ -18,10 +18,8 @@
         @at-root #{&}__Item {
             @extend .Parraf-Text;
             padding: 6px 10px;
-            margin-top: 5px;
             border-radius: $border_radius;
             cursor: pointer;
-            border-top: 1px solid $light_color_30;
 
             &:hover {
                 background-color: $primary_color_light;
