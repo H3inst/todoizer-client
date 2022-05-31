@@ -2,15 +2,14 @@ const pool = require('../../../lib/database.connection');
 
 async function getAllProjectsDao(user_id) {
   const projects = await pool.query(
-    `
-    SELECT
+    `SELECT
       p.project_id,
       p.project_name,
       u.user_id
     FROM tz_projects p
     LEFT JOIN tz_users u ON p.user_id = u.user_id
     WHERE p.user_id = ?
-    `,
+    ORDER BY p.created_at ASC`,
     [user_id]
   );
 

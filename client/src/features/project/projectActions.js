@@ -25,3 +25,24 @@ export function getAllProjectsAction() {
     }
   };
 }
+
+export function createProjectAction(project) {
+  return async function (dispatch) {
+    try {
+      dispatch(interfaceActions.startLoadingAction());
+
+      const response = await projectServices.createProjectService(project);
+      if (response.status !== STATUS.ok) {
+        toast.error(response.error);
+        return false;
+      }
+      dispatch(getAllProjectsAction());
+
+    } catch (error) {
+      console.error(error);
+
+    } finally {
+      dispatch(interfaceActions.finishLoadingAction());
+    }
+  };
+}

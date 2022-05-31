@@ -1,14 +1,15 @@
 import { useState, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { SettingsOption, Search } from "grommet-icons";
-import { logoutUserAction } from '../../../features/user/userActions';
 import { useOutsideClick } from '../../../hooks/useOutsideClick';
+import LogoutModal from '../modals/LogoutModal';
 
 function Topbar() {
   const [openMenu, setOpenMenu] = useState(false);
+  const [logoutModalOpen, setLogoutModalOpen] = useState(false);
+
   const userName = useSelector(state => state.user.user.user_name);
   const wrapperRef = useRef(null);
-  const dispatch = useDispatch();
 
   const handleOpenMenu = () => {
     setOpenMenu(true);
@@ -18,11 +19,18 @@ function Topbar() {
     setOpenMenu(false);
   };
 
+  const handleOpenModal = () => {
+    setLogoutModalOpen(true);
+    setOpenMenu(false);
+  };
+
+  const handleCloseModal = () => {
+    setLogoutModalOpen(false);
+  };
+
   useOutsideClick(wrapperRef, openMenu, handleCloseMenu);
 
-  const handleLogout = () => {
-    dispatch(logoutUserAction());
-  };
+
 
   const render = () => {
     return (
@@ -51,11 +59,16 @@ function Topbar() {
             <h1 className="Title-Text ml-10">
               Hi {userName}!
             </h1>
-            <div className="Dropdown-Menu__Item" onClick={handleLogout}>
+            <div className="Dropdown-Menu__Item" onClick={handleOpenModal}>
               Logout
             </div>
           </div>
         </div>
+        <LogoutModal
+          isOpen={logoutModalOpen}
+          onClose={handleCloseModal}
+          width={350}
+        />
       </div>
     );
   };
