@@ -11,11 +11,14 @@ export const projectSlice = createSlice({
   reducers: {
     getAllProjects: (state, action) => {
       state.projects = action.payload;
+    },
+    getProject: (state, action) => {
+      state.project = action.payload;
     }
   }
 });
 
-export const { getAllProjects } = projectSlice.actions;
+export const { getAllProjects, getProject } = projectSlice.actions;
 const projectReducer = projectSlice.reducer;
 
 export default projectReducer;

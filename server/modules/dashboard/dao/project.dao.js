@@ -18,7 +18,11 @@ async function getAllProjectsDao(user_id) {
 
 async function getProjectById(project_id) {
   const result = await pool.query(
-    `SELECT * FROM tz_projects p 
+    `SELECT
+      p.project_id,
+      p.project_name,
+      p.created_at
+    FROM tz_projects p 
     WHERE p.project_id = ?`,
     [project_id]
   );

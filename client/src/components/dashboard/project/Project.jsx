@@ -1,12 +1,22 @@
 import { Add, Close, MoreVertical } from 'grommet-icons';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+
 import { useOutsideClick } from '../../../hooks/useOutsideClick';
+import { getProjectByIdAction } from '../../../features/project/projectActions';
 
 function Project() {
   const [openMenu, setOpenMenu] = useState(false);
   const wrapperRef = useRef(null);
   const { projectId } = useParams();
+
+  const dispatch = useDispatch();
+  const projectName = useSelector(state => state.project.project.project_name);
+
+  useEffect(() => {
+    dispatch(getProjectByIdAction(projectId));
+  }, [dispatch, projectId]);
 
   const handleOpenMenu = () => {
     setOpenMenu(true);
@@ -22,7 +32,7 @@ function Project() {
     return (
       <div className="Main-Layout">
         <div className="flex align-center">
-          <h1 className="Title-Text flex-1">{projectId}</h1>
+          <h1 className="Title-Text flex-1">{projectName}</h1>
           <button className="Button">Add list</button>
           <div
             className="Dropdown"

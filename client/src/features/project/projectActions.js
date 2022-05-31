@@ -2,7 +2,7 @@ import { toast } from 'react-toastify';
 import { STATUS } from '../../constants/constants';
 import * as projectServices from '../../services/dashboard/project';
 import * as interfaceActions from '../interface/interfaceActions';
-import { getAllProjects } from './projectSlice';
+import { getAllProjects, getProject } from './projectSlice';
 
 export function getAllProjectsAction() {
   return async function (dispatch) {
@@ -24,6 +24,28 @@ export function getAllProjectsAction() {
       dispatch(interfaceActions.finishLoadingAction());
     }
   };
+}
+
+export function getProjectByIdAction(projectId) {
+  return async function (dispatch) {
+    try {
+      dispatch(interfaceActions.startLoadingAction());
+
+      const response = await projectServices.getProjectByIdService(projectId);
+      if (response.status !== STATUS.ok) {
+        toast.error(response.error);
+        return false;
+      }
+      dispatch(getProject(response.data));
+      return true;
+
+    } catch (error) {
+      console.error(error);
+
+    } finally {
+      dispatch(interfaceActions.finishLoadingAction());
+    }
+  }
 }
 
 export function createProjectAction(project) {

@@ -16,6 +16,27 @@ export async function getAllProjectsService() {
   return serviceData;
 }
 
+/**
+ * Get a project by ID
+ * @param {String} project_id 
+ * @returns 
+ */
+export async function getProjectByIdService(project_id) {
+  const absoluteUrl = buildUrl(`/dashboard/projects/${project_id}`);
+  const headers = setHeaders();
+  const axiosParams = {
+    headers
+  };
+
+  const { data: serviceData } = await axios.get(absoluteUrl, axiosParams);
+  return serviceData;
+}
+
+/**
+ * Creates a project
+ * @param {Object} payload 
+ * @returns 
+ */
 export async function createProjectService(payload) {
   const absoluteUrl = buildUrl('/dashboard/projects');
   const headers = setHeaders();
@@ -27,6 +48,11 @@ export async function createProjectService(payload) {
   return serviceData;
 }
 
+/**
+ * Deletes a project
+ * @param {String} projectId 
+ * @returns 
+ */
 export async function deleteProjectService(projectId) {
   const absoluteUrl = buildUrl(`/dashboard/projects/${projectId}`);
   const headers = setHeaders();
