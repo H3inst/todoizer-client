@@ -1,4 +1,4 @@
 export const STATUS = {
-  ok: 'ok',
+  success: 'ok',
   error: 'error'
 };

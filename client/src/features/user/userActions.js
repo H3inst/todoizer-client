@@ -17,7 +17,7 @@ export function registerUserAction(user) {
       delete user.confirm_password;
 
       const response = await accessServices.registerUserService(user);
-      if (response.status !== STATUS.ok) {
+      if (response.status !== STATUS.success) {
         toast.error(response.error);
         return false;
       }
@@ -39,7 +39,7 @@ export function loginUserAction(user) {
       dispatch(interfaceActions.startLoadingAction());
       const response = await accessServices.loginUserService(user);
 
-      if (response.status !== STATUS.ok) {
+      if (response.status !== STATUS.success) {
         toast.error(response.error);
         return false;
       }
@@ -74,7 +74,7 @@ export function verifyAuthAction() {
       dispatch(interfaceActions.startLoadingAction());
       const response = await accessServices.checkTokenService();
 
-      if (response.status !== STATUS.ok) {
+      if (response.status !== STATUS.success) {
         localStorage.removeItem('x_token');
         return false;
       }

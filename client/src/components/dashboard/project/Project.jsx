@@ -5,9 +5,12 @@ import { useParams } from 'react-router-dom';
 
 import { useOutsideClick } from '../../../hooks/useOutsideClick';
 import { getProjectByIdAction } from '../../../features/project/projectActions';
+import DeleteProjectModal from './modals/DeleteProjectModal';
 
 function Project() {
   const [openMenu, setOpenMenu] = useState(false);
+  const [deleteProjectModal, setDeleteProjectModal] = useState({ visible: false });
+
   const wrapperRef = useRef(null);
   const { projectId } = useParams();
 
@@ -25,6 +28,15 @@ function Project() {
   const handleCloseMenu = () => {
     setOpenMenu(false);
   };
+
+  const handleOpenDeleteProjectModal = () => {
+    setDeleteProjectModal({ visible: true, projectId });
+    handleCloseMenu();
+  };
+
+  const handleCloseDeleteProjectModal = () => {
+    setDeleteProjectModal({ visible: false });
+  }
 
   useOutsideClick(wrapperRef, openMenu, handleCloseMenu);
 
@@ -48,7 +60,10 @@ function Project() {
               <div className="Dropdown-Menu__Item">
                 Edit project name
               </div>
-              <div className="Dropdown-Menu__Item">
+              <div
+                className="Dropdown-Menu__Item"
+                onClick={handleOpenDeleteProjectModal}
+              >
                 Delete project
               </div>
             </div>
@@ -121,6 +136,11 @@ function Project() {
             />
           </div>
         </div>
+        <DeleteProjectModal
+          isOpen={deleteProjectModal}
+          onClose={handleCloseDeleteProjectModal}
+          width={400}
+        />
       </div>
     );
   };

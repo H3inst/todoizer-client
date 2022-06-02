@@ -10,7 +10,7 @@ export function getAllProjectsAction() {
       dispatch(interfaceActions.startLoadingAction());
 
       const response = await projectServices.getAllProjectsService();
-      if (response.status !== STATUS.ok) {
+      if (response.status !== STATUS.success) {
         toast.error(response.error);
         return false;
       }
@@ -32,7 +32,7 @@ export function getProjectByIdAction(projectId) {
       dispatch(interfaceActions.startLoadingAction());
 
       const response = await projectServices.getProjectByIdService(projectId);
-      if (response.status !== STATUS.ok) {
+      if (response.status !== STATUS.success) {
         toast.error(response.error);
         return false;
       }
@@ -45,7 +45,7 @@ export function getProjectByIdAction(projectId) {
     } finally {
       dispatch(interfaceActions.finishLoadingAction());
     }
-  }
+  };
 }
 
 export function createProjectAction(project) {
@@ -54,11 +54,33 @@ export function createProjectAction(project) {
       dispatch(interfaceActions.startLoadingAction());
 
       const response = await projectServices.createProjectService(project);
-      if (response.status !== STATUS.ok) {
+      if (response.status !== STATUS.success) {
         toast.error(response.error);
         return false;
       }
       dispatch(getAllProjectsAction());
+
+    } catch (error) {
+      console.error(error);
+
+    } finally {
+      dispatch(interfaceActions.finishLoadingAction());
+    }
+  };
+}
+
+export function deleteProjectAction(projectId) {
+  return async function (dispatch) {
+    try {
+      dispatch(interfaceActions.startLoadingAction());
+
+      const response = await projectServices.deleteProjectService(projectId);
+      if (response.status !== STATUS.success) {
+        toast.error(response.error);
+        return false;
+      }
+      dispatch(getAllProjectsAction());
+      return true;
 
     } catch (error) {
       console.error(error);
