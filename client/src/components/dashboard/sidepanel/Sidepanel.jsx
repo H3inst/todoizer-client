@@ -7,23 +7,23 @@ import TeamsModal from '../modals/TeamsModal';
 import ProjectsModal from '../modals/ProjectsModal';
 
 function Sidepanel({ projects = [] }) {
-  const [projectsModalConfig, setProjectsModalConfig] = useState(false);
-  const [teamsModalConfig, setTeamsModalConfig] = useState(false);
+  const [projectsModal, setProjectsModal] = useState(false);
+  const [teamsModal, setTeamsModal] = useState(false);
 
   const handleOpenTeamsModal = () => {
-    setTeamsModalConfig(true);
+    setTeamsModal(true);
   };
 
   const handleCloseTeamsModal = () => {
-    setTeamsModalConfig(false);
+    setTeamsModal(false);
   };
 
   const handleOpenProjectsModal = () => {
-    setProjectsModalConfig(true);
+    setProjectsModal(true);
   };
 
   const handleCloseProjectsModal = () => {
-    setProjectsModalConfig(false);
+    setProjectsModal(false);
   };
 
   const render = () => {
@@ -73,12 +73,12 @@ function Sidepanel({ projects = [] }) {
           <p className="Parraf-Text">Dev team</p>
         </NavLink>
         <ProjectsModal
-          isOpen={projectsModalConfig}
+          isOpen={projectsModal}
           width={400}
           onClose={handleCloseProjectsModal}
         />
         <TeamsModal
-          isOpen={teamsModalConfig}
+          isOpen={teamsModal}
           width={450}
           onClose={handleCloseTeamsModal}
         />

@@ -9,7 +9,7 @@ const PROJECt_SCHEMA = Joi.object({
   project_id: Joi.string().max(15).required(),
   user_id: Joi.string().max(15).required(),
   project_name: Joi.string().required(),
-  created_at: Joi.date().required()
+  created_at: Joi.date()
 });
 
 async function getAllProjectsModel(request_object) {
@@ -30,7 +30,7 @@ async function createProjectModel(request_object) {
   const { project_name } = request_object.body;
   const user_id = request_object.user_id;
   const project_id = generateId('P');
-  const created_at =  moment().format();
+  const created_at = moment().format();
 
   const project_data = {
     project_id,
@@ -42,7 +42,7 @@ async function createProjectModel(request_object) {
   validateSchema(PROJECt_SCHEMA, project_data);
   await ProjectDao.createProjectDao(project_data);
 
-  return {};
+  return { project_id };
 }
 
 async function editProjectModel(request_object) {
@@ -56,8 +56,8 @@ async function editProjectModel(request_object) {
     user_id
   };
 
-  validateSchema(project_data);
-  await ProjectDao.editProjectDao();
+  validateSchema(PROJECt_SCHEMA, project_data);
+  await ProjectDao.editProjectDao(project_data);
 
   return {};
 }

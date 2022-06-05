@@ -1,16 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Projects } from 'grommet-icons';
 import { useDispatch } from 'react-redux';
-import { generatePath, useNavigate } from 'react-router-dom';
 
-import Modal from '../../../app/common/Modal';
-import { createProjectAction } from '../../../features/project/projectActions';
-import routes from '../../../constants/routes';
+import Modal from '../../../../app/common/Modal';
+import { editProjectAction } from '../../../../features/project/projectActions';
 
-function ProjectsModal({ isOpen, onClose, width }) {
+function EditProjectModal({ isOpen, onClose, data, width }) {
   const [projectName, setProjectName] = useState('');
-  const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (data) {
+      setProjectName(data.projectName);
+    }
+  }, [data]);
 
   const handleCloseModal = () => {
     onClose();
@@ -20,16 +23,11 @@ function ProjectsModal({ isOpen, onClose, width }) {
     setProjectName(target.value);
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    let data = await dispatch(createProjectAction({
+    dispatch(editProjectAction(data.projectId, {
       project_name: projectName
     }));
-    if (data) {
-      navigate(generatePath(routes.dashboardProject, {
-        projectId: data.project_id
-      }));
-    }
     onClose();
   };
 
@@ -37,9 +35,9 @@ function ProjectsModal({ isOpen, onClose, width }) {
     return (
       <Modal isOpen={isOpen} onClose={onClose} width={width}>
         <form onSubmit={handleSubmit}>
-          <h1 className="TitleText">Create project</h1>
+          <h1 className="TitleText">Change project name</h1>
           <p className="Parraf-Text mt-10">
-            Create a project and start organize all your activities.
+            Change the name of your project.
           </p>
           <div className="Textfield-With-Icon mt-20">
             <Projects />
@@ -47,6 +45,7 @@ function ProjectsModal({ isOpen, onClose, width }) {
               type="text"
               placeholder="Project title"
               onChange={handleOnChange}
+              value={projectName}
               required
             />
           </div>
@@ -55,7 +54,7 @@ function ProjectsModal({ isOpen, onClose, width }) {
               type="submit"
               className="Button Button__Primary"
             >
-              Create
+              Change
             </button>
             <button
               type="button"
@@ -73,4 +72,4 @@ function ProjectsModal({ isOpen, onClose, width }) {
   return render();
 }
 
-export default ProjectsModal;
+export default EditProjectModal;

@@ -59,6 +59,30 @@ export function createProjectAction(project) {
         return false;
       }
       dispatch(getAllProjectsAction());
+      return response.data;
+
+    } catch (error) {
+      console.error(error);
+
+    } finally {
+      dispatch(interfaceActions.finishLoadingAction());
+    }
+  };
+}
+
+export function editProjectAction(projectId, payload) {
+  return async function (dispatch) {
+    try {
+      dispatch(interfaceActions.startLoadingAction());
+
+      const response = await projectServices.editProjectService(projectId, payload);
+      if (response.status !== STATUS.success) {
+        toast.error(response.error);
+        return false;
+      }
+      dispatch(getProjectByIdAction(projectId));
+      dispatch(getAllProjectsAction());
+      return true;
 
     } catch (error) {
       console.error(error);

@@ -10,9 +10,6 @@ function Team() {
       <div className="Main-Layout">
         <div className="flex justify-between align-center">
           <h1 className="Title-Text">{teamId}</h1>
-          <button className="Button">
-            Add list
-          </button>
         </div>
         <EmptyState />
       </div>

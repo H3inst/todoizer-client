@@ -39,8 +39,17 @@ async function createProjectDao(project_data) {
   return {};
 }
 
-async function editProjectDao() {
-  await pool.query('UPDATE tz_projects SET ?', []);
+async function editProjectDao(project_data) {
+  await pool.query(
+    `UPDATE tz_projects p
+    SET project_name = ?
+    WHERE p.user_id = ?
+    AND p.project_id = ?`,
+    [
+      project_data.project_name,
+      project_data.user_id,
+      project_data.project_id
+    ]);
 }
 
 async function deleteProjectDao(project_id) {

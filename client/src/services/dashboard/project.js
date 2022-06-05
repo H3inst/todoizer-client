@@ -49,6 +49,23 @@ export async function createProjectService(payload) {
 }
 
 /**
+ * Edit a project
+ * @param {String} projectId 
+ * @param {Object} payload 
+ * @returns 
+ */
+export async function editProjectService(projectId, payload) {
+  const absoluteUrl = buildUrl(`/dashboard/projects/${projectId}`);
+  const headers = setHeaders();
+  const axiosParams = {
+    headers
+  };
+
+  const { data: serviceData } = await axios.put(absoluteUrl, payload, axiosParams);
+  return serviceData;
+}
+
+/**
  * Deletes a project
  * @param {String} projectId 
  * @returns 
