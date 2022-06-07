@@ -47,7 +47,6 @@ function Sidepanel({ projects = [] }) {
               projectId: project.project_id
             })}
           >
-            <Fireball size="15px" color="#0747a6" className="mr-10" />
             <p className="Parraf-Text">{project.project_name}</p>
           </NavLink>
         ))}
@@ -69,7 +68,6 @@ function Sidepanel({ projects = [] }) {
             teamId: 'T_0sk2lMsi9'
           })}
         >
-          <Group size="14px" color="#0747a6" className="mr-10" />
           <p className="Parraf-Text">Dev team</p>
         </NavLink>
         <ProjectsModal

@@ -23,7 +23,7 @@
 }
 
 .Dashboard-Sidepanel {
-    width: 300px;
+    width: 270px;
     height: 100%;
     overflow-y: auto;
     background-color: $light_color_10;
@@ -44,13 +44,14 @@
         height: 35px;
         display: flex;
         align-items: center;
-        padding-left: 30px;
+        padding-left: 40px;
         cursor: pointer;
         text-decoration: none;
         color: $black;
 
         &.Item-Active {
             background-color: $primary_color_light;
+            font-weight: $font_weight_bold
         }
 
     }
