@@ -10,7 +10,7 @@ function generateToken(user) {
         user_name: user.user_name
       },
       JWT_SECRET_KEY,
-      { expiresIn: '2h' },
+      { expiresIn: '6h' },
       function (error, token) {
         if (error) {
           console.error(error);

@@ -37,7 +37,7 @@ function ProjectsModal({ isOpen, onClose, width }) {
     return (
       <Modal isOpen={isOpen} onClose={onClose} width={width}>
         <form onSubmit={handleSubmit}>
-          <h1 className="TitleText">Create project</h1>
+          <h1 className="Title-Text">Create project</h1>
           <p className="Parraf-Text mt-10">
             Create a project and start organize all your activities.
           </p>

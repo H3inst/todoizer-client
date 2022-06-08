@@ -35,7 +35,7 @@ function EditProjectModal({ isOpen, onClose, data, width }) {
     return (
       <Modal isOpen={isOpen} onClose={onClose} width={width}>
         <form onSubmit={handleSubmit}>
-          <h1 className="TitleText">Change project name</h1>
+          <h1 className="Title-Text">Change project name</h1>
           <p className="Parraf-Text mt-10">
             Change the name of your project.
           </p>

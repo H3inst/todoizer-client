@@ -17,7 +17,7 @@ function LogoutModal({ isOpen, onClose, width }) {
   const render = () => {
     return (
       <Modal isOpen={isOpen} onClose={onClose} width={width}>
-        <h1 className="TitleText">Logout</h1>
+        <h1 className="Title-Text">Logout</h1>
         <p className="Parraf-Text mt-10">
           Are you sure you want to leave the app?
         </p>
