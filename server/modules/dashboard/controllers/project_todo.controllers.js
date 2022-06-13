@@ -39,15 +39,15 @@ async function editTodoController(req, res, next) {
 
   } catch (error) {
     next(error);
-    
+
   }
 }
 
 async function deleteTodoController(req, res, next) {
   try {
-    const result = await ProjectTodoModels.deleteTodoModal(req);
+    const result = await ProjectTodoModels.deleteTodoModel(req);
     successResponse(res, result);
-    
+
   } catch (error) {
     next(error);
   }

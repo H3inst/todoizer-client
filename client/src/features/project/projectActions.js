@@ -1,8 +1,9 @@
 import { toast } from 'react-toastify';
-import { STATUS } from '../../constants/constants';
+import { RESPONSE_STATUS } from '../../constants/constants';
 import * as projectServices from '../../services/dashboard/project';
 import * as interfaceActions from '../interface/interfaceActions';
 import { getAllProjects, getProject } from './projectSlice';
+import { getAllTodosAction } from './projectTodoActions';
 
 export function getAllProjectsAction() {
   return async function (dispatch) {
@@ -10,7 +11,7 @@ export function getAllProjectsAction() {
       dispatch(interfaceActions.startLoadingAction());
 
       const response = await projectServices.getAllProjectsService();
-      if (response.status !== STATUS.success) {
+      if (response.status !== RESPONSE_STATUS.success) {
         toast.error(response.error);
         return false;
       }
@@ -32,12 +33,12 @@ export function getProjectByIdAction(projectId) {
       dispatch(interfaceActions.startLoadingAction());
 
       const response = await projectServices.getProjectByIdService(projectId);
-      if (response.status !== STATUS.success) {
+      if (response.status !== RESPONSE_STATUS.success) {
         toast.error(response.error);
         return false;
       }
       dispatch(getProject(response.data));
-      return true;
+      dispatch(getAllTodosAction(projectId));
 
     } catch (error) {
       console.error(error);
@@ -54,7 +55,7 @@ export function createProjectAction(project) {
       dispatch(interfaceActions.startLoadingAction());
 
       const response = await projectServices.createProjectService(project);
-      if (response.status !== STATUS.success) {
+      if (response.status !== RESPONSE_STATUS.success) {
         toast.error(response.error);
         return false;
       }
@@ -76,7 +77,7 @@ export function editProjectAction(projectId, payload) {
       dispatch(interfaceActions.startLoadingAction());
 
       const response = await projectServices.editProjectService(projectId, payload);
-      if (response.status !== STATUS.success) {
+      if (response.status !== RESPONSE_STATUS.success) {
         toast.error(response.error);
         return false;
       }
@@ -99,7 +100,7 @@ export function deleteProjectAction(projectId) {
       dispatch(interfaceActions.startLoadingAction());
 
       const response = await projectServices.deleteProjectService(projectId);
-      if (response.status !== STATUS.success) {
+      if (response.status !== RESPONSE_STATUS.success) {
         toast.error(response.error);
         return false;
       }

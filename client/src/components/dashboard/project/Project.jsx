@@ -1,14 +1,20 @@
-import { Add, Close, MoreVertical } from 'grommet-icons';
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Add, Close, MoreVertical } from 'grommet-icons';
 import { useParams } from 'react-router-dom';
 
-import { useOutsideClick } from '../../../hooks/useOutsideClick';
+import { TODO_STATUS } from '../../../constants/constants';
+
+import { createTodoAction, deleteTodoAction, editTodoAction } from '../../../features/project/projectTodoActions';
 import { getProjectByIdAction } from '../../../features/project/projectActions';
+import { useOutsideClick } from '../../../hooks/useOutsideClick';
+
 import DeleteProjectModal from './modals/DeleteProjectModal';
 import EditProjectModal from './modals/EditProjectModal';
+import EmptyStateTodos from '../emptyState/EmptyStateTodos';
 
 function Project() {
+  const [todoDescription, setTodoDescription] = useState('');
   const [openMenu, setOpenMenu] = useState(false);
   const [editProjectModal, setEditProjectModal] = useState(false);
   const [deleteProjectModal, setDeleteProjectModal] = useState(false);
@@ -17,7 +23,7 @@ function Project() {
   const { projectId } = useParams();
 
   const dispatch = useDispatch();
-  const projectName = useSelector(state => state.project.project.project_name);
+  const project = useSelector(state => state.project.project);
 
   useEffect(() => {
     dispatch(getProjectByIdAction(projectId));
@@ -47,6 +53,45 @@ function Project() {
 
   const handleCloseDeleteProjectModal = () => {
     setDeleteProjectModal(false);
+  };
+
+  const handleOnChange = ({ target }) => {
+    setTodoDescription(target.value);
+  };
+
+  const handleCreateTodo = (event) => {
+    event.preventDefault();
+    if (todoDescription.trim().length > 0) {
+      dispatch(createTodoAction(projectId, {
+        todo_description: todoDescription
+      }));
+      setTodoDescription('');
+    }
+  };
+
+  const handleOnChangeTodoStatus = ({ target }, todo) => {
+    let todoData = {};
+    if (todo.todo_status === TODO_STATUS.undone) {
+      todoData.todo_status = TODO_STATUS.done;
+    } else if (todo.todo_status === TODO_STATUS.done) {
+      todoData.todo_status = TODO_STATUS.undone;
+    } else {
+      todoData.todo_status = TODO_STATUS.done;
+    }
+    dispatch(editTodoAction(projectId, todo.todo_id, todoData));
+  };
+
+  const handleOnChangeTodoDescription = ({ target }, todo) => {
+    let todoData = {
+      todo_description: target.value
+    };
+    dispatch(editTodoAction(projectId, todo.todo_id, todoData));
+  };
+
+  const handleDeleteTodo = (todoId) => {
+    if (todoId) {
+      dispatch(deleteTodoAction(projectId, todoId));
+    }
   };
 
   useOutsideClick(wrapperRef, openMenu, handleCloseMenu);
@@ -81,83 +126,71 @@ function Project() {
     );
   };
 
+  const renderTodos = () => {
+    return (
+      <div className="Main-Layout__Todo-List">
+        <form onSubmit={handleCreateTodo} className="mb-10">
+          <div className="flex">
+            <input
+              className="Textfield-No-Bg"
+              type="text"
+              name="todo_description"
+              placeholder="Type a new todo here"
+              onChange={handleOnChange}
+              value={todoDescription}
+            />
+            <button className="IconButton">
+              <Add />
+            </button>
+          </div>
+        </form>
+        {project.todos.length > 0 ? project.todos.map((todo, index) => {
+          let isDone = todo.todo_status === TODO_STATUS.done;
+
+          return (
+            <div key={todo.todo_id} className="Main-Layout__Todo-List__Item">
+              <input
+                type="checkbox"
+                checked={isDone}
+                id={`todo_status_${index}`}
+                name={`todo_status_${index}`}
+                onChange={(e) => handleOnChangeTodoStatus(e, todo)}
+              />
+              <input
+                className="Textfield-No-Bg pl-10"
+                type="text"
+                defaultValue={todo.todo_description}
+                onBlur={(e) => handleOnChangeTodoDescription(e, todo)}
+                style={{ textDecoration: todo.todo_status === TODO_STATUS.done ? 'line-through' : 'none' }}
+              />
+              <button
+                className="IconButton"
+                type="submit"
+                onClick={() => handleDeleteTodo(todo.todo_id)}
+              >
+                <Close size="10" />
+              </button>
+            </div>
+          );
+        }) : (
+          <EmptyStateTodos />
+        )}
+
+      </div>
+    );
+  };
+
   const render = () => {
     return (
       <div className="Main-Layout">
         <div className="flex align-center">
-          <h1 className="Title-Text flex-1">{projectName}</h1>
+          <h1 className="Title-Text flex-1">{project.project_name}</h1>
           {renderProjectOptions()}
         </div>
-        <div className="Main-Layout__Todo-List">
-          <div className="Main-Layout__Todo-List__Item">
-            <input type="checkbox" name="" id="" />
-            <input
-              className="Textfield-No-Bg"
-              type="text"
-              defaultValue="This is my first todo in todoizer."
-            />
-            <button className="IconButton">
-              <Close size="10" />
-            </button>
-          </div>
-          <div className="Main-Layout__Todo-List__Item">
-            <input type="checkbox" name="" id="" />
-            <input
-              className="Textfield-No-Bg"
-              type="text"
-              defaultValue="This is my first todo in todoizer."
-            />
-            <button className="IconButton">
-              <Close size="10" />
-            </button>
-          </div>
-          <div className="Main-Layout__Todo-List__Item">
-            <input type="checkbox" name="" id="" />
-            <input
-              className="Textfield-No-Bg"
-              type="text"
-              defaultValue="This is my first todo in todoizer."
-            />
-            <button className="IconButton">
-              <Close size="10" />
-            </button>
-          </div>
-          <div className="Main-Layout__Todo-List__Item">
-            <input type="checkbox" name="" id="" />
-            <input
-              className="Textfield-No-Bg"
-              type="text"
-              defaultValue="This is my first todo in todoizer."
-            />
-            <button className="IconButton">
-              <Close size="10" />
-            </button>
-          </div>
-          <div className="Main-Layout__Todo-List__Item">
-            <input type="checkbox" name="" id="" />
-            <input
-              className="Textfield-No-Bg"
-              type="text"
-              defaultValue="This is my first todo in todoizer."
-            />
-            <button className="IconButton">
-              <Close size="10" />
-            </button>
-          </div>
-
-          <div className="Textfield-With-Icon__No-Bg mt-10 w-100">
-            <Add />
-            <input
-              className="w-100"
-              type="text"
-              name="user_email"
-              placeholder="Add a new Todo"
-            />
-          </div>
-        </div>
+        {renderTodos()}
         <EditProjectModal
           isOpen={editProjectModal}
-          data={{ projectId, projectName }}
+          data={{ projectId, projectName: project.project_name }}
           onClose={handleCloseEditProjectModal}
           width={400}
         />

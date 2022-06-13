@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   projects: [],
-  project: {}
+  project: { todos: [] }
 };
 
 export const projectSlice = createSlice({
@@ -13,12 +13,15 @@ export const projectSlice = createSlice({
       state.projects = action.payload;
     },
     getProject: (state, action) => {
-      state.project = action.payload;
+      state.project = { ...state.project, ...action.payload };
+    },
+    getProjectTodos: (state, action) => {
+      state.project.todos = action.payload;
     }
   }
 });
 
-export const { getAllProjects, getProject } = projectSlice.actions;
+export const { getAllProjects, getProject, getProjectTodos } = projectSlice.actions;
 const projectReducer = projectSlice.reducer;
 
 export default projectReducer;

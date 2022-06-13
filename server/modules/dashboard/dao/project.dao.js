@@ -53,7 +53,14 @@ async function editProjectDao(project_data) {
 }
 
 async function deleteProjectDao(project_id) {
-  await pool.query('DELETE FROM tz_projects p WHERE p.project_id = ?', [project_id]);
+  await pool.query(
+    'DELETE FROM tz_project_todos t WHERE t.project_id = ?',
+    [project_id]
+  );
+  await pool.query(
+    'DELETE FROM tz_projects p WHERE p.project_id = ?',
+    [project_id]
+  );
 
   return {};
 }

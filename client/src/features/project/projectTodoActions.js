@@ -1,27 +1,41 @@
-import { toast } from 'react-toastify';
-
-import { RESPONSE_STATUS } from '../../constants/constants';
-import * as accessServices from '../../services/access';
 import * as interfaceActions from '../interface/interfaceActions';
-import { login, logout } from './userSlice';
+import * as todoServices from '../../services/dashboard/projectTodo';
+import { RESPONSE_STATUS } from '../../constants/constants';
+import { toast } from 'react-toastify';
+import { getProjectTodos } from './projectSlice';
 
-export function registerUserAction(user) {
+export function getAllTodosAction(projectId) {
   return async function (dispatch) {
     try {
       dispatch(interfaceActions.startLoadingAction());
 
-      if (user.user_password !== user.confirm_password) {
-        toast.error('Password do not match.');
-        return false;
-      }
-      delete user.confirm_password;
-
-      const response = await accessServices.registerUserService(user);
+      const response = await todoServices.getAllTodosService(projectId);
       if (response.status !== RESPONSE_STATUS.success) {
         toast.error(response.error);
         return false;
       }
-      toast.success('Account create successfully, please login.');
+      dispatch(getProjectTodos(response.data.todos));
+
+    } catch (error) {
+      console.error(error);
+
+    } finally {
+      dispatch(interfaceActions.finishLoadingAction());
+    }
+  };
+}
+
+export function createTodoAction(projectId, payload) {
+  return async function (dispatch) {
+    try {
+      dispatch(interfaceActions.startLoadingAction());
+
+      const response = await todoServices.createTodoService(projectId, payload);
+      if (response.status !== RESPONSE_STATUS.success) {
+        toast.error(response.error);
+        return false;
+      }
+      dispatch(getAllTodosAction(projectId));
       return true;
 
     } catch (error) {
@@ -33,52 +47,40 @@ export function registerUserAction(user) {
   };
 }
 
-export function loginUserAction(user) {
+export function editTodoAction(projectId, todo_id, payload) {
   return async function (dispatch) {
     try {
       dispatch(interfaceActions.startLoadingAction());
-      const response = await accessServices.loginUserService(user);
 
+      const response = await todoServices.editTodoService(projectId, todo_id, payload);
       if (response.status !== RESPONSE_STATUS.success) {
         toast.error(response.error);
         return false;
       }
-      localStorage.setItem('x_token', response.data.token);
-      dispatch(login(response.data.user));
+      dispatch(getAllTodosAction(projectId));
 
     } catch (error) {
       console.error(error);
 
     } finally {
       dispatch(interfaceActions.finishLoadingAction());
+
     }
   };
 }
 
-export function logoutUserAction() {
-  return function (dispatch) {
-    try {
-      dispatch(interfaceActions.startLoadingAction());
-      localStorage.clear();
-      dispatch(logout());
-
-    } finally {
-      dispatch(interfaceActions.finishLoadingAction());
-    }
-  };
-}
-
-export function verifyAuthAction() {
+export function deleteTodoAction(projectId, todoId) {
   return async function (dispatch) {
     try {
       dispatch(interfaceActions.startLoadingAction());
-      const response = await accessServices.checkTokenService();
 
+      const response = await todoServices.deleteTodoService(projectId, todoId);
       if (response.status !== RESPONSE_STATUS.success) {
-        localStorage.removeItem('x_token');
+        toast.error(response.error);
         return false;
       }
-      dispatch(login(response.data));
+      dispatch(getAllTodosAction(projectId));
+      return true;
 
     } catch (error) {
       console.error(error);
