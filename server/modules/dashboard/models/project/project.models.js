@@ -1,9 +1,9 @@
 const Joi = require('joi');
 const moment = require('moment');
-const generateId = require('../../../lib/generateid');
+const generateId = require('../../../../lib/generateid');
 
-const validateSchema = require('../../../lib/validate.schema');
-const ProjectDao = require('../dao/project.dao');
+const validateSchema = require('../../../../lib/validate.schema');
+const ProjectDao = require('../../dao/project/project.dao');
 
 const PROJECt_SCHEMA = Joi.object({
   project_id: Joi.string().max(15).required(),

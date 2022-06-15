@@ -1,4 +1,4 @@
-const ProjectModels = require('../../models/project.models');
+const ProjectModels = require('../../models/project/project.models');
 const { successResponse } = require('../../../../lib/response.helper');
 
 async function getAllProjectsController(req, res, next) {

@@ -1,4 +1,4 @@
-const pool = require('../../../lib/database.connection');
+const pool = require('../../../../lib/database.connection');
 
 async function getAllProjectsDao(user_id) {
   const projects = await pool.query(

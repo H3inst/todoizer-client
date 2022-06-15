@@ -1,10 +1,10 @@
 const Joi = require('joi');
 const moment = require('moment');
-const { TODO_STATUS } = require('../../../constants/constants');
+const { TODO_STATUS } = require('../../../../constants/constants');
 
-const generateId = require('../../../lib/generateid');
-const validateSchema = require('../../../lib/validate.schema');
-const ProjectTodoDao = require('../dao/project_todo.dao');
+const generateId = require('../../../../lib/generateid');
+const validateSchema = require('../../../../lib/validate.schema');
+const ProjectTodoDao = require('../../dao/project/project_todo.dao');
 
 const PROJECT_TODO_SCHEMA = Joi.object({
   todo_id: Joi.string().max(15).required(),
