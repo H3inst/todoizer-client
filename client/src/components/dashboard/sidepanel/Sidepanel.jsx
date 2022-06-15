@@ -47,7 +47,7 @@ function Sidepanel({ projects = [] }) {
               projectId: project.project_id
             })}
           >
-            <p className="Parraf-Text">{project.project_name}</p>
+            <p className="Parraf-Text project-name">{project.project_name}</p>
             <p className="Parraf-Text ml-10 text-muted">{project.total_count_todos}</p>
           </NavLink>
         ))}

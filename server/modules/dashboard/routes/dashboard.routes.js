@@ -1,8 +1,8 @@
 const express = require('express');
 const validateJsonWebToken = require('../../../middlewares/validate.jwt');
 
-const ProjectControllers = require('../controllers/project.controllers');
-const ProjectTodoControllers = require('../controllers/project_todo.controllers');
+const ProjectControllers = require('../controllers/project/project.controllers');
+const ProjectTodoControllers = require('../controllers/project/project_todo.controllers');
 
 const router = express.Router();
 

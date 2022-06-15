@@ -1,6 +1,6 @@
-const ProjectTodoModels = require('../models/project_todo.models');
+const ProjectTodoModels = require('../../models/project_todo.models');
 
-const { successResponse } = require('../../../lib/response.helper');
+const { successResponse } = require('../../../../lib/response.helper');
 
 async function getAllTodosController(req, res, next) {
   try {

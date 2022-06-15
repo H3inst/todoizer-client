@@ -51,7 +51,10 @@
 
         &.Item-Active {
             background-color: $primary_color_light;
-            font-weight: $font_weight_bold
+
+            .project-name {
+                font-weight: $font_weight_bold;
+            }
         }
 
     }
