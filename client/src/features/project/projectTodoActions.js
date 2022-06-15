@@ -3,6 +3,7 @@ import * as todoServices from '../../services/dashboard/projectTodo';
 import { RESPONSE_STATUS } from '../../constants/constants';
 import { toast } from 'react-toastify';
 import { getProjectTodos } from './projectSlice';
+import { getAllProjectsAction } from './projectActions';
 
 export function getAllTodosAction(projectId) {
   return async function (dispatch) {
@@ -36,6 +37,7 @@ export function createTodoAction(projectId, payload) {
         return false;
       }
       dispatch(getAllTodosAction(projectId));
+      dispatch(getAllProjectsAction());
       return true;
 
     } catch (error) {
@@ -80,6 +82,7 @@ export function deleteTodoAction(projectId, todoId) {
         return false;
       }
       dispatch(getAllTodosAction(projectId));
+      dispatch(getAllProjectsAction());
       return true;
 
     } catch (error) {

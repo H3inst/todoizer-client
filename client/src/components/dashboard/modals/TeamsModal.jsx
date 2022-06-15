@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Group, Lock } from 'grommet-icons';
+import { Group } from 'grommet-icons';
 
 import Modal from '../../../app/common/Modal';
 
@@ -24,15 +24,9 @@ function TeamsModal({ isOpen, onClose = () => { }, width }) {
         <p className="Parraf-Text">
           Here you can create your own team and invite your teammates.
         </p>
-        <div className="flex align-center mt-20">
-          <div className="Textfield-With-Icon mr-10">
-            <Group />
-            <input type="text" placeholder="Your team name" />
-          </div>
-          <div className="Textfield-With-Icon">
-            <Lock />
-            <input type="text" placeholder="Your team code" />
-          </div>
+        <div className="Textfield-With-Icon mt-10">
+          <Group />
+          <input type="text" placeholder="Your team name" />
         </div>
         <div className="w-100 flex justify-end mt-20">
           <button className="Button Button__Primary">
@@ -56,7 +50,7 @@ function TeamsModal({ isOpen, onClose = () => { }, width }) {
         <p className="Parraf-Text">
           You can join in a team by introducing the team code.
         </p>
-        <div className="Textfield-With-Icon mt-20">
+        <div className="Textfield-With-Icon mt-10">
           <Group />
           <input type="text" placeholder="Team code" />
         </div>

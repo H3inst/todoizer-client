@@ -85,7 +85,9 @@ function Project() {
     let todoData = {
       todo_description: target.value
     };
-    dispatch(editTodoAction(projectId, todo.todo_id, todoData));
+    if (target.value !== todo.todo_description) {
+      dispatch(editTodoAction(projectId, todo.todo_id, todoData));
+    }
   };
 
   const handleDeleteTodo = (todoId) => {

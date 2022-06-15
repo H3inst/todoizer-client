@@ -5,10 +5,13 @@ async function getAllProjectsDao(user_id) {
     `SELECT
       p.project_id,
       p.project_name,
-      u.user_id
+      u.user_id,
+      COUNT(t.todo_id) as total_count_todos
     FROM tz_projects p
     LEFT JOIN tz_users u ON p.user_id = u.user_id
+    LEFT JOIN tz_project_todos t ON p.project_id = t.project_id
     WHERE p.user_id = ?
+    GROUP BY p.project_id, p.project_id
     ORDER BY p.created_at ASC`,
     [user_id]
   );

@@ -11,7 +11,7 @@ function EmptyStateTodos() {
         left: '0'
       }}
       >
-        <img src={EmptyTodos} width={300} alt="Empty todos" />
+        <img src={EmptyTodos} width={250} alt="Empty todos" />
         <h1 className="mt-10">You don't have todos. Start typing one above.</h1>
       </div>
     );

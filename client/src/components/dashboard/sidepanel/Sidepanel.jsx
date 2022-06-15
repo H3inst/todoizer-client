@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { generatePath, NavLink } from 'react-router-dom';
-import { Down, Add, Fireball, Group } from 'grommet-icons';
+import { Down, Add } from 'grommet-icons';
 
 import routes from '../../../constants/routes';
 import TeamsModal from '../modals/TeamsModal';
@@ -48,6 +48,7 @@ function Sidepanel({ projects = [] }) {
             })}
           >
             <p className="Parraf-Text">{project.project_name}</p>
+            <p className="Parraf-Text ml-10 text-muted">{project.total_count_todos}</p>
           </NavLink>
         ))}
 
