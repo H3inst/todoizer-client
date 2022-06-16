@@ -5,7 +5,7 @@ const generateId = require('../../../../lib/generateid');
 const validateSchema = require('../../../../lib/validate.schema');
 const ProjectDao = require('../../dao/project/project.dao');
 
-const PROJECt_SCHEMA = Joi.object({
+const PROJECT_SCHEMA = Joi.object({
   project_id: Joi.string().max(15).required(),
   user_id: Joi.string().max(15).required(),
   project_name: Joi.string().required(),
@@ -39,7 +39,7 @@ async function createProjectModel(request_object) {
     created_at
   };
 
-  validateSchema(PROJECt_SCHEMA, project_data);
+  validateSchema(PROJECT_SCHEMA, project_data);
   await ProjectDao.createProjectDao(project_data);
 
   return { project_id };
@@ -56,7 +56,7 @@ async function editProjectModel(request_object) {
     user_id
   };
 
-  validateSchema(PROJECt_SCHEMA, project_data);
+  validateSchema(PROJECT_SCHEMA, project_data);
   await ProjectDao.editProjectDao(project_data);
 
   return {};
