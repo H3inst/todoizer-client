@@ -6,7 +6,7 @@ function EmptyStateTodos() {
     return (
       <div className="text-center" style={{
         position: 'absolute',
-        top: '30%',
+        top: '35%',
         right: '0',
         left: '0'
       }}
