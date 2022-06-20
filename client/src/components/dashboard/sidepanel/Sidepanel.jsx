@@ -6,7 +6,7 @@ import routes from '../../../constants/routes';
 import TeamsModal from '../modals/TeamsModal';
 import ProjectsModal from '../modals/ProjectsModal';
 
-function Sidepanel({ projects = [] }) {
+function Sidepanel({ projects = [], teams = [] }) {
   const [projectsModal, setProjectsModal] = useState(false);
   const [teamsModal, setTeamsModal] = useState(false);
 
@@ -26,6 +26,38 @@ function Sidepanel({ projects = [] }) {
     setProjectsModal(false);
   };
 
+  const renderProjects = () => {
+    return projects.map((project) => (
+      <NavLink
+        key={project.project_id}
+        className={({ isActive }) =>
+          isActive ? "Dashboard-Sidepanel__List-Item Item-Active" : "Dashboard-Sidepanel__List-Item"}
+        to={generatePath(routes.dashboardProject, {
+          projectId: project.project_id
+        })}
+      >
+        <p className="Parraf-Text project-name">{project.project_name}</p>
+        <p className="Parraf-Text ml-10 text-muted">{project.total_count_todos}</p>
+      </NavLink>
+    ));
+  };
+
+  const renderTeams = () => {
+    return teams.map((team) => (
+      <NavLink
+        key={team.team_id}
+        className={({ isActive }) =>
+          isActive ? "Dashboard-Sidepanel__List-Item Item-Active" : "Dashboard-Sidepanel__List-Item"}
+        to={generatePath(routes.dashboardTeam, {
+          teamId: team.team_id
+        })}
+      >
+        <p className="Parraf-Text project-name">{team.team_name}</p>
+        {/* <p className="Parraf-Text ml-10 text-muted">{team.total_count_todos}</p> */}
+      </NavLink>
+    ));
+  };
+
   const render = () => {
     return (
       <div className="Dashboard-Sidepanel">
@@ -38,21 +70,7 @@ function Sidepanel({ projects = [] }) {
             <Add size="15px" />
           </button>
         </div>
-        {projects.map((project) => (
-          <NavLink
-            key={project.project_id}
-            className={({ isActive }) =>
-              isActive ? "Dashboard-Sidepanel__List-Item Item-Active" : "Dashboard-Sidepanel__List-Item"}
-            to={generatePath(routes.dashboardProject, {
-              projectId: project.project_id
-            })}
-          >
-            <p className="Parraf-Text project-name">{project.project_name}</p>
-            <p className="Parraf-Text ml-10 text-muted">{project.total_count_todos}</p>
-          </NavLink>
-        ))}
-
-
+        {renderProjects()}
         <div className="Dashboard-Sidepanel__List-Title">
           <div className="flex align-center flex-1">
             <Down size="small" className="mr-10" />
@@ -62,15 +80,7 @@ function Sidepanel({ projects = [] }) {
             <Add size="15px" />
           </button>
         </div>
-        <NavLink
-          className={({ isActive }) =>
-            isActive ? "Dashboard-Sidepanel__List-Item Item-Active" : "Dashboard-Sidepanel__List-Item"}
-          to={generatePath(routes.dashboardTeam, {
-            teamId: 'T_0sk2lMsi9'
-          })}
-        >
-          <p className="Parraf-Text">Dev team</p>
-        </NavLink>
+        {renderTeams()}
         <ProjectsModal
           isOpen={projectsModal}
           width={400}
