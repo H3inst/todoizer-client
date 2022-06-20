@@ -1,6 +1,6 @@
 import { toast } from 'react-toastify';
 import { RESPONSE_STATUS } from '../../constants/constants';
-import * as projectServices from '../../services/dashboard/project';
+import * as projectServices from '../../services/dashboard/project/project';
 import * as interfaceActions from '../interface/interfaceActions';
 import { getAllProjects, getProject } from './projectSlice';
 import { getAllTodosAction } from './projectTodoActions';

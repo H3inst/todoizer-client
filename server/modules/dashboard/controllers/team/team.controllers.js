@@ -3,7 +3,7 @@ const { successResponse } = require('../../../../lib/response.helper');
 
 async function getAllTeamsController(req, res, next) {
   try {
-    const result = await TeamModels.getAllTeamsModel();
+    const result = await TeamModels.getAllTeamsModel(req);
     successResponse(res, result);
 
   } catch (error) {
@@ -13,7 +13,7 @@ async function getAllTeamsController(req, res, next) {
 
 async function getTeamByIdController(req, res, next) {
   try {
-    const result = await TeamModels.getTeamByIdModel();
+    const result = await TeamModels.getTeamByIdModel(req);
     successResponse(res, result);
 
   } catch (error) {
@@ -23,7 +23,7 @@ async function getTeamByIdController(req, res, next) {
 
 async function createTeamController(req, res, next) {
   try {
-    const result = await TeamModels.createTeamModel();
+    const result = await TeamModels.createTeamModel(req);
     successResponse(res, result);
 
   } catch (error) {
@@ -33,7 +33,7 @@ async function createTeamController(req, res, next) {
 
 async function editTeamController(req, res, next) {
   try {
-    const result = await TeamModels.editTeamModel();
+    const result = await TeamModels.editTeamModel(req);
     successResponse(res, result);
 
   } catch (error) {
@@ -43,7 +43,7 @@ async function editTeamController(req, res, next) {
 
 async function deleteTeamController(req, res, next) {
   try {
-    const result = await TeamModels.deleteTeamModel();
+    const result = await TeamModels.deleteTeamModel(req);
     successResponse(res, result);
 
   } catch (error) {

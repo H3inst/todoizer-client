@@ -15,6 +15,13 @@ const TEAM_SCHEMA = Joi.object({
   created_at: Joi.date()
 });
 
+async function getAllTeamsModel(request_object) {
+  const user_id = request_object.user_id;
+  let teams = await TeamDao.getAllTeamsDao(user_id);
+
+  return { teams };
+}
+
 async function createTeamModel(request_object) {
   const { team_name } = request_object.body;
   const team_id = generateId('T');
@@ -37,5 +44,6 @@ async function createTeamModel(request_object) {
 }
 
 module.exports = {
-  createTeamModel
+  createTeamModel,
+  getAllTeamsModel
 };

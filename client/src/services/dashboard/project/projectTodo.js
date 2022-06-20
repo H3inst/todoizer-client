@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { buildUrl, setHeaders } from '../../utils/utils';
+import { buildUrl, setHeaders } from '../../../utils/utils';
 
 export async function getAllTodosService(projectId) {
   const absoluteUrl = buildUrl(`/dashboard/project/${projectId}/todo`);

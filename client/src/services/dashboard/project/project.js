@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { buildUrl, setHeaders } from '../../utils/utils';
+import { buildUrl, setHeaders } from '../../../utils/utils';
 
 /**
  * Get all projects availables

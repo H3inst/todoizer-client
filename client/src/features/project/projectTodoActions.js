@@ -1,5 +1,5 @@
 import * as interfaceActions from '../interface/interfaceActions';
-import * as todoServices from '../../services/dashboard/projectTodo';
+import * as todoServices from '../../services/dashboard/project/projectTodo';
 import { RESPONSE_STATUS } from '../../constants/constants';
 import { toast } from 'react-toastify';
 import { getProjectTodos } from './projectSlice';
