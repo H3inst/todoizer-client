@@ -22,6 +22,13 @@ async function getAllTeamsModel(request_object) {
   return { teams };
 }
 
+async function getTeamByIdModel(request_object) {
+  const { team_id } = request_object.params;
+  let team = await TeamDao.getTeamByIdDao(team_id);
+
+  return { team };
+}
+
 async function createTeamModel(request_object) {
   const { team_name } = request_object.body;
   const team_id = generateId('T');
@@ -45,5 +52,6 @@ async function createTeamModel(request_object) {
 
 module.exports = {
   createTeamModel,
-  getAllTeamsModel
+  getAllTeamsModel,
+  getTeamByIdModel
 };

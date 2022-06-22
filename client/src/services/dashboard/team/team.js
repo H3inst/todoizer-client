@@ -17,6 +17,22 @@ export async function getAllTeamsService() {
 }
 
 /**
+ * Get team by id
+ * @param {String} team_id 
+ * @returns 
+ */
+export async function getTeamByIdService(team_id) {
+  const absoluteUrl = buildUrl(`/dashboard/teams/${team_id}`);
+  const headers = setHeaders();
+  const axiosParams = {
+    headers
+  };
+
+  const { data: serviceData } = await axios.get(absoluteUrl, axiosParams);
+  return serviceData;
+}
+
+/**
  * Create a team
  * @param {Object} payload 
  * @returns 
