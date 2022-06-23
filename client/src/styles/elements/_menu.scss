@@ -3,10 +3,9 @@
     display: inline-block;
 
     @at-root #{&}-Menu {
-        display: none;
         position: absolute;
         top: 40px;
-        right: 0px;
+        right: -40px;
         background-color: $light_color_10;
         border-radius: $border_radius;
         border: 1px solid $light_color_30;
@@ -14,6 +13,8 @@
         min-width: 200px;
         z-index: 1;
         user-select: none;
+        transform: scale(0);
+        transition: 0.1s all ease-in-out;
 
         @at-root #{&}__Item {
             @extend .Parraf-Text;
@@ -29,5 +30,6 @@
 }
 
 .Show-Menu {
-    display: block !important;
+    right: 0px;
+    transform: scale(100%);
 }
