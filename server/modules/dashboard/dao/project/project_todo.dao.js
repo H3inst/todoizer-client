@@ -11,7 +11,7 @@ async function getAllTodosDao(user_id, project_id) {
     LEFT JOIN tz_projects p ON t.project_id = p.project_id
     WHERE t.user_id = ?
     AND p.project_id = ?
-    ORDER BY t.created_at ASC`,
+    ORDER BY t.created_at DESC`,
     [user_id, project_id]
   );
 
