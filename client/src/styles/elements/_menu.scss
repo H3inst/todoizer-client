@@ -17,16 +17,17 @@
         user-select: none;
         transform: scale(0);
         transform-origin: top right;
-        transition: 0.3s all ease-in-out;
+        transition: 0.2s all ease;
         white-space: nowrap;
         box-shadow: $box_shadow;
-
+        
         @at-root #{&}__Item {
             @extend .Parraf-Text;
             display: flex;
             align-items: center;
             padding: 6px 10px;
             border-radius: $border_radius;
+            text-decoration: none;
             cursor: pointer;
             color: #666;
 

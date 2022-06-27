@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { generatePath, NavLink, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Edit, Group, MoreVertical, Trash } from 'grommet-icons';
 
@@ -8,6 +8,7 @@ import { useOutsideClick } from '../../../hooks/useOutsideClick';
 
 import EmptyState from '../emptyState/EmptyStateProject';
 import { useEffect } from 'react';
+import routes from '../../../constants/routes';
 
 function Team() {
   const wrapperRef = useRef();
@@ -25,7 +26,7 @@ function Team() {
 
   const handleOpenMenu = () => {
     setOpenMenu(true);
-  }
+  };
 
   const handleCloseMenu = () => {
     setOpenMenu(false);
@@ -47,10 +48,15 @@ function Team() {
             <Edit size="15" className="mr-20" />
             Change team name
           </div>
-          <div className="Dropdown-Menu__Item">
+          <NavLink
+            to={generatePath(routes.dashboardTeamMembers, {
+              teamId: teamId
+            })}
+            className="Dropdown-Menu__Item"
+          >
             <Group size="15" className="mr-20" />
             Manage members
-          </div>
+          </NavLink>
           <div className="Dropdown-Menu__Item">
             <Trash size="15" className="mr-20" />
             Delete team

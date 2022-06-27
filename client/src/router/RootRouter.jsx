@@ -11,6 +11,7 @@ import Dashboard from '../components/dashboard/Dashboard';
 import EmptyState from '../components/dashboard/emptyState/EmptyStateDashboard';
 import Project from '../components/dashboard/project/Project';
 import Team from '../components/dashboard/team/Team';
+import TeamMembers from '../components/dashboard/team/members/TeamMembers';
 
 
 function RootRouter() {
@@ -48,7 +49,7 @@ function RootRouter() {
             <Route index element={<EmptyState />} />
             <Route path={routes.dashboardProject} element={<Project />} />
             <Route path={routes.dashboardTeam} element={<Team />} />
-            <Route path={routes.dashboardTeamMembers} element={<h1>Members</h1>} />
+            <Route path={routes.dashboardTeamMembers} element={<TeamMembers />} />
             <Route path={routes.dashboardSettings} element={<h1>Settgins</h1>} />
           </Route>
         </Routes>
