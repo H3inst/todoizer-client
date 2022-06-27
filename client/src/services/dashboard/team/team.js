@@ -38,7 +38,7 @@ export async function getTeamByIdService(team_id) {
  * @returns 
  */
 export async function createTeamService(payload) {
-  const absoluteUrl = buildUrl('dashboard/teams');
+  const absoluteUrl = buildUrl('/dashboard/teams');
   const headers = setHeaders();
   const axiosParams = {
     headers

@@ -17,11 +17,19 @@ export const projectSlice = createSlice({
     },
     getProjectTodos: (state, action) => {
       state.project.todos = action.payload;
+    },
+    cleanProject: (state) => {
+      state.project = initialState.project
     }
   }
 });
 
-export const { getAllProjects, getProject, getProjectTodos } = projectSlice.actions;
+export const {
+  getAllProjects,
+  getProject,
+  getProjectTodos,
+  cleanProject
+} = projectSlice.actions;
 const projectReducer = projectSlice.reducer;
 
 export default projectReducer;

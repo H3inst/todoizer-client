@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { generatePath, NavLink } from 'react-router-dom';
-import { Down, Add } from 'grommet-icons';
+import { Down, Add, Group, EmptyCircle } from 'grommet-icons';
 
 import routes from '../../../constants/routes';
 import TeamsModal from '../modals/TeamsModal';
@@ -60,11 +60,11 @@ function Sidepanel({ projects = [], teams = [] }) {
 
   const render = () => {
     return (
-      <div className="Dashboard-Sidepanel">
+      <aside className="Dashboard-Sidepanel">
         <div className="Dashboard-Sidepanel__List-Title">
           <div className="flex align-center flex-1">
             <Down size="small" className="mr-10" />
-            <p className="Parraf-Text">Projects</p>
+            <p>Projects</p>
           </div>
           <button className="IconButton" onClick={handleOpenProjectsModal}>
             <Add size="15px" />
@@ -74,7 +74,7 @@ function Sidepanel({ projects = [], teams = [] }) {
         <div className="Dashboard-Sidepanel__List-Title">
           <div className="flex align-center flex-1">
             <Down size="small" className="mr-10" />
-            <p className="Parraf-Text">Teams</p>
+            <p>Teams</p>
           </div>
           <button className="IconButton" onClick={handleOpenTeamsModal}>
             <Add size="15px" />
@@ -91,7 +91,7 @@ function Sidepanel({ projects = [], teams = [] }) {
           width={450}
           onClose={handleCloseTeamsModal}
         />
-      </div>
+      </aside>
     );
   };
 

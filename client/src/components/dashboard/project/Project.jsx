@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Add, Close, MoreVertical } from 'grommet-icons';
+import { Add, Close, Edit, MoreVertical, Trash } from 'grommet-icons';
 import { useParams } from 'react-router-dom';
 
 import { TODO_STATUS } from '../../../constants/constants';
@@ -14,16 +14,15 @@ import EditProjectModal from './modals/EditProjectModal';
 import EmptyStateTodos from '../emptyState/EmptyStateTodos';
 
 function Project() {
+  const wrapperRef = useRef(null);
+  const { projectId } = useParams();
+  const dispatch = useDispatch();
+  const project = useSelector(state => state.project.project);
+
   const [todoDescription, setTodoDescription] = useState('');
   const [openMenu, setOpenMenu] = useState(false);
   const [editProjectModal, setEditProjectModal] = useState(false);
   const [deleteProjectModal, setDeleteProjectModal] = useState(false);
-
-  const wrapperRef = useRef(null);
-  const { projectId } = useParams();
-
-  const dispatch = useDispatch();
-  const project = useSelector(state => state.project.project);
 
   useEffect(() => {
     dispatch(getProjectByIdAction(projectId));
@@ -100,10 +99,7 @@ function Project() {
 
   const renderProjectOptions = () => {
     return (
-      <div
-        className="Dropdown"
-        ref={wrapperRef}
-      >
+      <div className="Dropdown" ref={wrapperRef}>
         <button
           className="IconButton ml-10"
           onClick={handleOpenMenu}
@@ -115,12 +111,14 @@ function Project() {
             className="Dropdown-Menu__Item"
             onClick={handleOpenEditProjectModal}
           >
+            <Edit size="15" className="mr-20" />
             Change project name
           </div>
           <div
             className="Dropdown-Menu__Item"
             onClick={handleOpenDeleteProjectModal}
           >
+            <Trash size="15" className="mr-20" />
             Delete project
           </div>
         </div>
@@ -163,7 +161,12 @@ function Project() {
                 type="text"
                 defaultValue={todo.todo_description}
                 onBlur={(e) => handleOnChangeTodoDescription(e, todo)}
-                style={{ textDecoration: todo.todo_status === TODO_STATUS.done ? 'line-through' : 'none' }}
+                style={{
+                  textDecoration:
+                    todo.todo_status === TODO_STATUS.done
+                      ? 'line-through'
+                      : 'none'
+                }}
               />
               <button
                 className="IconButton"
@@ -177,7 +180,6 @@ function Project() {
         }) : (
           <EmptyStateTodos />
         )}
-
       </div>
     );
   };
@@ -186,7 +188,9 @@ function Project() {
     return (
       <div className="Main-Layout">
         <div className="flex align-center">
-          <h1 className="Title-Text flex-1">{project.project_name}</h1>
+          <h1 className="Title-Text flex-1">
+            {project.project_name}
+          </h1>
           {renderProjectOptions()}
         </div>
         {renderTodos()}

@@ -2,6 +2,7 @@ import { toast } from 'react-toastify';
 import { RESPONSE_STATUS } from '../../constants/constants';
 import * as projectServices from '../../services/dashboard/project/project';
 import * as interfaceActions from '../interface/interfaceActions';
+import { cleanTeam } from '../team/teamSlice';
 import { getAllProjects, getProject } from './projectSlice';
 import { getAllTodosAction } from './projectTodoActions';
 
@@ -37,6 +38,7 @@ export function getProjectByIdAction(projectId) {
         toast.error(response.error);
         return false;
       }
+      dispatch(cleanTeam());
       dispatch(getProject(response.data));
       dispatch(getAllTodosAction(projectId));
 

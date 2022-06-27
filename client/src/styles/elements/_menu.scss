@@ -3,9 +3,11 @@
     display: inline-block;
 
     @at-root #{&}-Menu {
+        display: flex;
+        flex-direction: column;
         position: absolute;
         top: 40px;
-        right: -40px;
+        right: 15px;
         background-color: $light_color_10;
         border-radius: $border_radius;
         border: 1px solid $light_color_30;
@@ -14,13 +16,19 @@
         z-index: 1;
         user-select: none;
         transform: scale(0);
-        transition: 0.1s all ease-in-out;
+        transform-origin: top right;
+        transition: 0.3s all ease-in-out;
+        white-space: nowrap;
+        box-shadow: $box_shadow;
 
         @at-root #{&}__Item {
             @extend .Parraf-Text;
+            display: flex;
+            align-items: center;
             padding: 6px 10px;
             border-radius: $border_radius;
             cursor: pointer;
+            color: #666;
 
             &:hover {
                 background-color: $primary_color_light;
@@ -30,6 +38,5 @@
 }
 
 .Show-Menu {
-    right: 0px;
     transform: scale(100%);
 }

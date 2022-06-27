@@ -48,6 +48,7 @@ function RootRouter() {
             <Route index element={<EmptyState />} />
             <Route path={routes.dashboardProject} element={<Project />} />
             <Route path={routes.dashboardTeam} element={<Team />} />
+            <Route path={routes.dashboardTeamMembers} element={<h1>Members</h1>} />
             <Route path={routes.dashboardSettings} element={<h1>Settgins</h1>} />
           </Route>
         </Routes>

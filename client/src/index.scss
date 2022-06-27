@@ -1,21 +1,14 @@
 @import "./styles/styles";
-@import url("https://rsms.me/inter/inter.css");
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700;900&display=swap');
 
 * {
   box-sizing: border-box;
-  font-family: "Poppins", sans-serif !important;
+  font-family: "Noto Sans", sans-serif !important;
 }
 
 html {
-  font-family: "Poppins", sans-serif;
+  font-family: "Noto Sans", sans-serif;
   font-size: 62.5%;
-}
-
-@supports (font-variation-settings: normal) {
-  html {
-    font-family: "Poppins", sans-serif;
-  }
 }
 
 body {
@@ -42,9 +35,11 @@ input[type="color"] {
   min-width: 32px;
   min-height: 32px;
 }
+
 input[type="color"]::-webkit-color-swatch-wrapper {
   padding: 0;
 }
+
 input[type="color"]::-webkit-color-swatch {
   border-radius: 50%;
   border: none;

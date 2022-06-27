@@ -29,7 +29,9 @@ export default Object.freeze({
   get dashboardTeam() {
     return `${this.dashboardTeams}/:teamId`;
   },
-
+  get dashboardTeamMembers() {
+    return `${this.dashboardTeam}/members`;
+  },
   get dashboardSettings() {
     return `${this.dashboard}/settings`;
   }
