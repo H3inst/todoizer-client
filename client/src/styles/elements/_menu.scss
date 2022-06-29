@@ -4,6 +4,7 @@
 
     @at-root #{&}-Menu {
         display: flex;
+        visibility: hidden;
         flex-direction: column;
         position: absolute;
         top: 40px;
@@ -39,5 +40,6 @@
 }
 
 .Show-Menu {
+    visibility: visible;
     transform: scale(100%);
 }
