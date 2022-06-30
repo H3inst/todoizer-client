@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { generatePath, NavLink } from 'react-router-dom';
-import { Down, Add, Group, EmptyCircle } from 'grommet-icons';
+import { Down, Add, Previous, Next } from 'grommet-icons';
 
 import routes from '../../../constants/routes';
 import TeamsModal from '../modals/TeamsModal';
@@ -9,6 +9,7 @@ import ProjectsModal from '../modals/ProjectsModal';
 function Sidepanel({ projects = [], teams = [] }) {
   const [projectsModal, setProjectsModal] = useState(false);
   const [teamsModal, setTeamsModal] = useState(false);
+  const [isSidepanelOpen, setIsSidepanelOpen] = useState(true);
 
   const handleOpenTeamsModal = () => {
     setTeamsModal(true);
@@ -25,6 +26,10 @@ function Sidepanel({ projects = [], teams = [] }) {
   const handleCloseProjectsModal = () => {
     setProjectsModal(false);
   };
+
+  const handleToggleSidepanel = () => {
+    setIsSidepanelOpen(prevState => !prevState);
+  }
 
   const renderProjects = () => {
     return projects.map((project) => (
@@ -60,38 +65,45 @@ function Sidepanel({ projects = [], teams = [] }) {
 
   const render = () => {
     return (
-      <aside className="Dashboard-Sidepanel">
-        <div className="Dashboard-Sidepanel__List-Title">
-          <div className="flex align-center flex-1">
-            <Down size="small" className="mr-10" />
-            <p>Projects</p>
-          </div>
-          <button className="IconButton" onClick={handleOpenProjectsModal}>
-            <Add size="15px" />
-          </button>
+      <div style={{ position: 'relative' }}>
+        <div
+          className="Dashboard-Sidepanel__Close-Button"
+          onClick={handleToggleSidepanel}>
+          {isSidepanelOpen ? <Previous /> : <Next />}
         </div>
-        {renderProjects()}
-        <div className="Dashboard-Sidepanel__List-Title">
-          <div className="flex align-center flex-1">
-            <Down size="small" className="mr-10" />
-            <p>Teams</p>
+        <aside className={`Dashboard-Sidepanel ${!isSidepanelOpen ? 'Dashboard-Sidepanel__Closed' : ''}`}>
+          <div className="Dashboard-Sidepanel__List-Title">
+            <div className="flex align-center flex-1">
+              <Down size="small" className="mr-10" />
+              <p>Projects</p>
+            </div>
+            <button className="IconButton" onClick={handleOpenProjectsModal}>
+              <Add size="15px" />
+            </button>
           </div>
-          <button className="IconButton" onClick={handleOpenTeamsModal}>
-            <Add size="15px" />
-          </button>
-        </div>
-        {renderTeams()}
-        <ProjectsModal
-          isOpen={projectsModal}
-          width={400}
-          onClose={handleCloseProjectsModal}
-        />
-        <TeamsModal
-          isOpen={teamsModal}
-          width={450}
-          onClose={handleCloseTeamsModal}
-        />
-      </aside>
+          {renderProjects()}
+          <div className="Dashboard-Sidepanel__List-Title">
+            <div className="flex align-center flex-1">
+              <Down size="small" className="mr-10" />
+              <p>Teams</p>
+            </div>
+            <button className="IconButton" onClick={handleOpenTeamsModal}>
+              <Add size="15px" />
+            </button>
+          </div>
+          {renderTeams()}
+          <ProjectsModal
+            isOpen={projectsModal}
+            width={400}
+            onClose={handleCloseProjectsModal}
+          />
+          <TeamsModal
+            isOpen={teamsModal}
+            width={450}
+            onClose={handleCloseTeamsModal}
+          />
+        </aside>
+      </div>
     );
   };
 

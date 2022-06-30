@@ -185,12 +185,22 @@ function Project() {
   };
 
   const render = () => {
+    let totalTodos = project.todos.length;
+    let doneTodos = project.todos.filter(t => t.todo_status === TODO_STATUS.done).length;
+
+    let completePercentage = totalTodos ? doneTodos / totalTodos * 100 : 0;
+
     return (
       <div className="Main-Layout">
         <div className="flex align-center">
-          <h1 className="Title-Text flex-1">
-            {project.project_name}
-          </h1>
+          <div className="flex-1">
+            <h1 className="Title-Text">
+              {project.project_name}
+            </h1>
+            <p className="Parraf-Text text-muted">
+              {parseFloat(completePercentage).toFixed(0)}% completed
+            </p>
+          </div>
           {renderProjectOptions()}
         </div>
         {renderTodos()}

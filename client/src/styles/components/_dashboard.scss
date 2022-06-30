@@ -27,6 +27,14 @@
     height: 100%;
     overflow-y: auto;
     background-color: $light_color_10;
+    transition: 0.3s all ease;
+    white-space: nowrap;
+    overflow-x: hidden;
+
+    &.Dashboard-Sidepanel__Closed {
+        width: 20px;
+        user-select: none;
+    }
 
     @at-root #{&}__List-Title {
         width: 100%;
@@ -37,7 +45,7 @@
         font-weight: $font_weight_bold;
         padding: 0 20px;
     }
-    
+
     @at-root #{&}__List-Item {
         height: 35px;
         display: flex;
@@ -52,7 +60,36 @@
         &.Item-Active {
             background-color: $primary_color_light;
         }
+    }
+}
 
+.Dashboard-Sidepanel__Close-Button {
+    width: 25px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    right: -12.5px;
+    border: 1px solid $light_color_30;
+    cursor: pointer;
+    transition: 0.1s all ease-in-out;
+    z-index: 100;
+
+    &:hover {
+        background-color: $primary_color;
+        color: $white !important;
+
+        svg {
+            stroke: $white !important;
+        }
     }
 
+    svg {
+        width: 15px;
+        stroke: $primary_color;
+    }
 }
