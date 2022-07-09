@@ -1,19 +1,19 @@
-function successResponse(res, data) {
-  let response = { status: 'ok', data };
-  return res.json(response);
-}
+class ResponseHelper {
 
-function errorResponse(res, error) {
-  let response = { error: 'No specified error.' };
-  
-  if (error instanceof Error) {
-    response.status = 'error';
-    response.error = error.message;
+  static successResponse(res, data) {
+    this.response = { status: 'ok', data };
+    return res.json(this.response);
   }
-  return res.json(response);
+
+  static errorResponse(res, error) {
+    this.response = { error: 'No specified error.' };
+
+    if (error instanceof Error) {
+      this.response.status = 'error';
+      this.response.error = error.message;
+    }
+    return res.json(this.response);
+  }
 }
 
-module.exports = {
-  successResponse,
-  errorResponse
-};
+module.exports = ResponseHelper;

@@ -1,60 +1,56 @@
-const ProjectModels = require('../../models/project/project.models');
-const { successResponse } = require('../../../../lib/response.helper');
+const ProjectModel = require('../../models/project/project.models');
+const ResponseHelper = require('../../../../lib/response.helper');
 
-async function getAllProjectsController(req, res, next) {
-  try {
-    const result = await ProjectModels.getAllProjectsModel(req);
-    successResponse(res, result);
+class ProjectController {
+  static async getAllProjects(req, res, next) {
+    try {
+      const result = await ProjectModel.getAllProjects(req);
+      ResponseHelper.successResponse(res, result);
 
-  } catch (error) {
-    next(error);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async getProjectById(req, res, next) {
+    try {
+      const result = await ProjectModel.getProjectById(req);
+      ResponseHelper.successResponse(res, result);
+
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async createProject(req, res, next) {
+    try {
+      const result = await ProjectModel.createProject(req);
+      ResponseHelper.successResponse(res, result);
+
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async editProject(req, res, next) {
+    try {
+      const result = await ProjectModel.editProject(req);
+      ResponseHelper.successResponse(res, result);
+
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async deleteProject(req, res, next) {
+    try {
+      const result = await ProjectModel.deleteProject(req);
+      ResponseHelper.successResponse(res, result);
+
+    } catch (error) {
+      next(error);
+    }
   }
 }
 
-async function getProjectByIdController(req, res, next) {
-  try {
-    const result = await ProjectModels.getProjectByIdModel(req);
-    successResponse(res, result);
-
-  } catch (error) {
-    next(error);
-  }
-}
-
-async function createProjectController(req, res, next) {
-  try {
-    const result = await ProjectModels.createProjectModel(req);
-    successResponse(res, result);
-
-  } catch (error) {
-    next(error);
-  }
-}
-
-async function editProjectController(req, res, next) {
-  try {
-    const result = await ProjectModels.editProjectModel(req);
-    successResponse(res, result);
-
-  } catch (error) {
-    next(error);
-  }
-}
-
-async function deleteProjectController(req, res, next) {
-  try {
-    const result = await ProjectModels.deleteProjectModel(req);
-    successResponse(res, result);
-
-  } catch (error) {
-    next(error);
-  }
-}
-
-module.exports = {
-  getAllProjectsController,
-  getProjectByIdController,
-  createProjectController,
-  editProjectController,
-  deleteProjectController
-};
+module.exports = ProjectController;

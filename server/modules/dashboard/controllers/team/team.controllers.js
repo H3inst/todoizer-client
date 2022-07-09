@@ -1,60 +1,56 @@
-const TeamModels = require('../../models/team/team.models');
-const { successResponse } = require('../../../../lib/response.helper');
+const TeamModel = require('../../models/team/team.models');
+const ResponseHelper = require('../../../../lib/response.helper');
 
-async function getAllTeamsController(req, res, next) {
-  try {
-    const result = await TeamModels.getAllTeamsModel(req);
-    successResponse(res, result);
+class TeamController {
+  static async getAllTeams(req, res, next) {
+    try {
+      const result = await TeamModel.getAllTeams(req);
+      ResponseHelper.successResponse(res, result);
 
-  } catch (error) {
-    next(error);
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async getTeamById(req, res, next) {
+    try {
+      const result = await TeamModel.getTeamById(req);
+      ResponseHelper.successResponse(res, result);
+
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async createTeam(req, res, next) {
+    try {
+      const result = await TeamModel.createTeam(req);
+      ResponseHelper.successResponse(res, result);
+
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async editTeam(req, res, next) {
+    try {
+      const result = await TeamModel.editTeam(req);
+      ResponseHelper.successResponse(res, result);
+
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  static async deleteTeam(req, res, next) {
+    try {
+      const result = await TeamModel.deleteTeam(req);
+      ResponseHelper.successResponse(res, result);
+
+    } catch (error) {
+      next(error);
+    }
   }
 }
 
-async function getTeamByIdController(req, res, next) {
-  try {
-    const result = await TeamModels.getTeamByIdModel(req);
-    successResponse(res, result);
-
-  } catch (error) {
-    next(error);
-  }
-}
-
-async function createTeamController(req, res, next) {
-  try {
-    const result = await TeamModels.createTeamModel(req);
-    successResponse(res, result);
-
-  } catch (error) {
-    next(error);
-  }
-}
-
-async function editTeamController(req, res, next) {
-  try {
-    const result = await TeamModels.editTeamModel(req);
-    successResponse(res, result);
-
-  } catch (error) {
-    next(error);
-  }
-}
-
-async function deleteTeamController(req, res, next) {
-  try {
-    const result = await TeamModels.deleteTeamModel(req);
-    successResponse(res, result);
-
-  } catch (error) {
-    next(error);
-  }
-}
-
-module.exports = {
-  getAllTeamsController,
-  getTeamByIdController,
-  createTeamController,
-  editTeamController,
-  deleteTeamController
-};
+module.exports = TeamController;

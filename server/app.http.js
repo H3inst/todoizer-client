@@ -2,7 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
 
-const { errorResponse } = require('./lib/response.helper');
+const ResponseHelper = require('./lib/response.helper');
 const apiRoutes = require('./routes');
 
 const app = express();
@@ -23,7 +23,7 @@ app.use('/api', apiRoutes);
 // Handling errors
 // eslint-disable-next-line no-unused-vars
 app.use(function (err, _req, res, _next) {
-  errorResponse(res, err);
+  ResponseHelper.errorResponse(res, err);
 });
 
 module.exports = app;
