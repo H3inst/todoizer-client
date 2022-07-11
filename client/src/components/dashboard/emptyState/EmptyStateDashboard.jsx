@@ -7,9 +7,9 @@ function EmptyState() {
   const [projectsModal, setProjectsModal] = useState(false);
   const [teamsModal, setTeamsModal] = useState(false);
 
-  const handleOpenTeamsModal = () => {
-    setTeamsModal(true);
-  };
+  // const handleOpenTeamsModal = () => {
+  //   setTeamsModal(true);
+  // };
 
   const handleCloseTeamsModal = () => {
     setTeamsModal(false);
@@ -32,17 +32,17 @@ function EmptyState() {
         </h1>
         <div className="flex mt-20">
           <button
-            className="Button Button__Primary mr-10"
+            className="Button Button__Primary"
             onClick={handleOpenProjectsModal}
           >
             Create a project
           </button>
-          <button
+          {/* <button
             className="Button"
             onClick={handleOpenTeamsModal}
           >
             Create a team
-          </button>
+          </button> */}
         </div>
         <ProjectsModal
           isOpen={projectsModal}

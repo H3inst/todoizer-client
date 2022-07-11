@@ -11,9 +11,9 @@ function Sidepanel({ projects = [], teams = [] }) {
   const [teamsModal, setTeamsModal] = useState(false);
   const [isSidepanelOpen, setIsSidepanelOpen] = useState(true);
 
-  const handleOpenTeamsModal = () => {
-    setTeamsModal(true);
-  };
+  // const handleOpenTeamsModal = () => {
+  //   setTeamsModal(true);
+  // };
 
   const handleCloseTeamsModal = () => {
     setTeamsModal(false);
@@ -47,21 +47,21 @@ function Sidepanel({ projects = [], teams = [] }) {
     ));
   };
 
-  const renderTeams = () => {
-    return teams.map((team) => (
-      <NavLink
-        key={team.team_id}
-        className={({ isActive }) =>
-          isActive ? "Dashboard-Sidepanel__List-Item Item-Active" : "Dashboard-Sidepanel__List-Item"}
-        to={generatePath(routes.dashboardTeam, {
-          teamId: team.team_id
-        })}
-      >
-        <p className="Parraf-Text project-name">{team.team_name}</p>
-        {/* <p className="Parraf-Text ml-10 text-muted">{team.total_count_todos}</p> */}
-      </NavLink>
-    ));
-  };
+  // const renderTeams = () => {
+  //   return teams.map((team) => (
+  //     <NavLink
+  //       key={team.team_id}
+  //       className={({ isActive }) =>
+  //         isActive ? "Dashboard-Sidepanel__List-Item Item-Active" : "Dashboard-Sidepanel__List-Item"}
+  //       to={generatePath(routes.dashboardTeam, {
+  //         teamId: team.team_id
+  //       })}
+  //     >
+  //       <p className="Parraf-Text project-name">{team.team_name}</p>
+  //       {/* <p className="Parraf-Text ml-10 text-muted">{team.total_count_todos}</p> */}
+  //     </NavLink>
+  //   ));
+  // };
 
   const render = () => {
     return (
@@ -82,7 +82,7 @@ function Sidepanel({ projects = [], teams = [] }) {
             </button>
           </div>
           {renderProjects()}
-          <div className="Dashboard-Sidepanel__List-Title">
+          {/* <div className="Dashboard-Sidepanel__List-Title">
             <div className="flex align-center flex-1">
               <Down size="small" className="mr-10" />
               <p>Teams</p>
@@ -91,7 +91,7 @@ function Sidepanel({ projects = [], teams = [] }) {
               <Add size="15px" />
             </button>
           </div>
-          {renderTeams()}
+          {renderTeams()} */}
           <ProjectsModal
             isOpen={projectsModal}
             width={400}

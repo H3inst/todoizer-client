@@ -3,6 +3,8 @@ import { toast } from 'react-toastify';
 import { RESPONSE_STATUS } from '../../constants/constants';
 import * as accessServices from '../../services/access';
 import * as interfaceActions from '../interface/interfaceActions';
+
+import { cleanProject } from '../project/projectSlice';
 import { login, logout } from './userSlice';
 
 export function registerUserAction(user) {
@@ -60,6 +62,7 @@ export function logoutUserAction() {
     try {
       dispatch(interfaceActions.startLoadingAction());
       localStorage.clear();
+      dispatch(cleanProject());
       dispatch(logout());
 
     } finally {
