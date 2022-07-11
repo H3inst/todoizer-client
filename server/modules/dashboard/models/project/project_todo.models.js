@@ -78,7 +78,7 @@ class ProjectTodoModel {
 
   static async deleteTodo(request_object) {
     const { project_id, todo_id } = request_object.params;
-    return await ProjectTodoDAO.deleteTodoDao(project_id, todo_id);
+    return await ProjectTodoDAO.deleteTodo(project_id, todo_id);
   }
 }
 
